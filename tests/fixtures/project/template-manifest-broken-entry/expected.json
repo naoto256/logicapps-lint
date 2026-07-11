@@ -1,0 +1,8 @@
+[
+  {
+    "code": "project-missing-connection-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Send_mail/inputs/host/connection/referenceName"
+  }
+]

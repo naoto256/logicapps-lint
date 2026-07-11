@@ -1,0 +1,32 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    },
+    "actions": {
+      "literal_at_expression_shape": {
+        "type": "Compose",
+        "inputs": "@@{notAnExpression}"
+      },
+      "literal_at_function_shape": {
+        "type": "Compose",
+        "runAfter": {
+          "literal_at_expression_shape": [
+            "Succeeded"
+          ]
+        },
+        "inputs": "@@triggerBody()"
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

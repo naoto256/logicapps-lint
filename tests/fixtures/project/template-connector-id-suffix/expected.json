@@ -1,0 +1,14 @@
+[
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "Main/manifest.json",
+    "pointer": "/connections/0/connectorId"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/contentVersion"
+  }
+]

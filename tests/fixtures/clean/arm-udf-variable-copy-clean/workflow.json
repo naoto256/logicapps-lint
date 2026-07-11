@@ -1,0 +1,66 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "functions": [
+    {
+      "namespace": "build",
+      "members": {
+        "actionType": {
+          "parameters": [
+            { "name": "prefix", "type": "string" }
+          ],
+          "output": {
+            "type": "string",
+            "value": "[concat(parameters('prefix'), 'pose')]"
+          }
+        },
+        "copyCount": {
+          "parameters": [],
+          "output": {
+            "type": "int",
+            "value": "[add(0, 1)]"
+          }
+        }
+      }
+    }
+  ],
+  "variables": {
+    "copy": [
+      {
+        "name": "definitions",
+        "count": "[build.copyCount()]",
+        "input": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+          "contentVersion": "1.0.0.0",
+          "triggers": {
+            "manual": {
+              "type": "Request",
+              "kind": "Http",
+              "inputs": { "schema": {} }
+            }
+          },
+          "actions": {
+            "Generated": {
+              "type": "[build.actionType('Com')]",
+              "inputs": "[copyIndex('definitions')]",
+              "runAfter": {}
+            }
+          },
+          "outputs": {}
+        }
+      }
+    ]
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "wf",
+      "location": "eastus",
+      "properties": {
+        "definition": "[variables('definitions')[0]]",
+        "parameters": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "code": "unknown-foreach-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Until_loop/actions/Use_Item/inputs"
+  }
+]

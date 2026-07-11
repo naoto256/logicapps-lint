@@ -1,0 +1,20 @@
+[
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_ApiManagement/inputs/method"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Function/inputs/queries"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Webhook/inputs/subscribe/retryPolicy"
+  }
+]

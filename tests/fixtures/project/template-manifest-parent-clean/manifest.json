@@ -1,0 +1,24 @@
+{
+  "id": "template-manifest-parent-clean",
+  "parameters": [],
+  "connections": [
+    {
+      "name": "office365",
+      "connectorId": "/providers/Microsoft.Web/locations/westus/managedApis/office365",
+      "kind": "shared"
+    }
+  ],
+  "title": "Fixture template",
+  "description": "Fixture template.",
+  "artifacts": [
+    {
+      "type": "workflow",
+      "file": "workflow.json"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "summary": "Fixture template"
+}

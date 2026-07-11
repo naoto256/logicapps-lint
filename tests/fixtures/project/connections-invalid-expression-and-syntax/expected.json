@@ -1,0 +1,44 @@
+[
+  {
+    "code": "project-connection-invalid-expression",
+    "severity": "error",
+    "path": "connections.json",
+    "pointer": "/managedApiConnections/blob/badArm"
+  },
+  {
+    "code": "project-connection-invalid-expression",
+    "severity": "error",
+    "path": "connections.json",
+    "pointer": "/managedApiConnections/blob/authentication"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "connections.json",
+    "pointer": "/managedApiConnections/blob/badArity"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "connections.json",
+    "pointer": "/managedApiConnections/blob/badPlainTextExpression"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "connections.json",
+    "pointer": "/managedApiConnections/blob/badQuotedParameter"
+  },
+  {
+    "code": "project-connection-invalid-expression",
+    "severity": "error",
+    "path": "connections.json",
+    "pointer": "/managedApiConnections/blob/unclosedExpression"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "connections.json",
+    "pointer": "/managedApiConnections/blob/unclosedExpression"
+  }
+]

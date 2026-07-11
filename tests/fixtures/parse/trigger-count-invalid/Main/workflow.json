@@ -1,0 +1,22 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "T0": { "type": "Recurrence", "recurrence": { "frequency": "Minute", "interval": 1 } },
+      "T1": { "type": "Recurrence", "recurrence": { "frequency": "Minute", "interval": 1 } },
+      "T2": { "type": "Recurrence", "recurrence": { "frequency": "Minute", "interval": 1 } },
+      "T3": { "type": "Recurrence", "recurrence": { "frequency": "Minute", "interval": 1 } },
+      "T4": { "type": "Recurrence", "recurrence": { "frequency": "Minute", "interval": 1 } },
+      "T5": { "type": "Recurrence", "recurrence": { "frequency": "Minute", "interval": 1 } },
+      "T6": { "type": "Recurrence", "recurrence": { "frequency": "Minute", "interval": 1 } },
+      "T7": { "type": "Recurrence", "recurrence": { "frequency": "Minute", "interval": 1 } },
+      "T8": { "type": "Recurrence", "recurrence": { "frequency": "Minute", "interval": 1 } },
+      "T9": { "type": "Recurrence", "recurrence": { "frequency": "Minute", "interval": 1 } },
+      "T10": { "type": "Recurrence", "recurrence": { "frequency": "Minute", "interval": 1 } }
+    },
+    "actions": {},
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

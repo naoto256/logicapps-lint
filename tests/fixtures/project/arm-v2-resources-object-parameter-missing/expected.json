@@ -1,0 +1,8 @@
+[
+  {
+    "code": "arm-missing-workflow-parameter",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/wf/properties/definition/parameters/RequiredValue"
+  }
+]

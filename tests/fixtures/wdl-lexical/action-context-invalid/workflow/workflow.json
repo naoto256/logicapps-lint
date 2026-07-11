@@ -1,0 +1,142 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Bad_Action_Context": {
+        "type": "Compose",
+        "inputs": "@action()",
+        "runAfter": {}
+      },
+      "Bad_Unsubscribe_Context": {
+        "type": "Compose",
+        "inputs": {
+          "unsubscribe": "@action()"
+        },
+        "runAfter": {
+          "Bad_Action_Context": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Callback_Context": {
+        "type": "Compose",
+        "inputs": "@listCallbackUrl()",
+        "runAfter": {
+          "Bad_Unsubscribe_Context": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Inputs_Tracked_Context": {
+        "type": "Compose",
+        "inputs": {
+          "trackedProperties": "@action().status"
+        },
+        "runAfter": {
+          "Bad_Callback_Context": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Spaced_Action_Context": {
+        "type": "Compose",
+        "inputs": "@action ()",
+        "runAfter": {
+          "Bad_Inputs_Tracked_Context": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Init_Variable": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "v",
+              "type": "String",
+              "value": "x"
+            }
+          ]
+        },
+        "runAfter": {
+          "Bad_Spaced_Action_Context": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_TrackedProperties_References": {
+        "type": "Compose",
+        "inputs": "tracked",
+        "trackedProperties": {
+          "other": "@outputs('Bad_Action_Context')",
+          "variable": "@variables('v')"
+        },
+        "runAfter": {
+          "Init_Variable": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_TrackedProperties_Trigger_Helper": {
+        "type": "Compose",
+        "inputs": "trigger helper",
+        "trackedProperties": {
+          "trigger": "@triggerBody()"
+        },
+        "runAfter": {
+          "Bad_TrackedProperties_References": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_TrackedProperties_Workflow": {
+        "type": "Compose",
+        "inputs": "workflow helper",
+        "trackedProperties": {
+          "workflow": "@workflow().name"
+        },
+        "runAfter": {
+          "Bad_TrackedProperties_Trigger_Helper": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_TrackedProperties_Mixed_Action": {
+        "type": "Compose",
+        "inputs": "mixed action helper",
+        "trackedProperties": {
+          "mixed": "@concat(action().inputs.uri, action().status)"
+        },
+        "runAfter": {
+          "Bad_TrackedProperties_Workflow": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Secure_TrackedProperties": {
+        "type": "Compose",
+        "inputs": "secure",
+        "runtimeConfiguration": {
+          "secureData": {
+            "properties": [
+              "inputs"
+            ]
+          }
+        },
+        "trackedProperties": {
+          "self": "@action().status"
+        },
+        "runAfter": {
+          "Bad_TrackedProperties_Mixed_Action": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

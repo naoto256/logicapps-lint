@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "pType": {
+      "type": "string"
+    },
+    "oType": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "wf",
+      "location": "westus",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "P": {
+              "type": "[parameters('pType')]"
+            }
+          },
+          "triggers": {
+            "manual": {
+              "type": "Request",
+              "kind": "Http",
+              "inputs": {
+                "schema": {}
+              }
+            }
+          },
+          "actions": {},
+          "outputs": {
+            "result": {
+              "type": "[parameters('oType')]",
+              "value": "ok"
+            }
+          }
+        },
+        "parameters": {
+          "P": {
+            "value": "hello"
+          }
+        }
+      }
+    }
+  ]
+}

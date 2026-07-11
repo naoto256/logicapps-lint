@@ -1,0 +1,20 @@
+[
+  {
+    "code": "runafter-cycle",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/A/runAfter/B"
+  },
+  {
+    "code": "runafter-cycle",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/B/runAfter/A"
+  },
+  {
+    "code": "runafter-cycle",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Self/runAfter/Self"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "title": "Missing metadata",
+  "description": "x",
+  "skus": [
+    "standard"
+  ],
+  "artifacts": [
+    { "type": "workflow", "file": "workflow.json" }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "id": "Main",
+  "summary": "Missing metadata"
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "consumerRunAfter": {
+      "type": "object"
+    },
+    "scopeType": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "dynamic-runafter",
+      "location": "eastus",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {
+            "Producer": {
+              "type": "Compose",
+              "inputs": "ok",
+              "runAfter": {}
+            },
+            "Consumer": {
+              "type": "Compose",
+              "inputs": "@outputs('Producer')",
+              "runAfter": "[parameters('consumerRunAfter')]"
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "dynamic-action-type",
+      "location": "eastus",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {
+            "MaybeScope": {
+              "type": "[parameters('scopeType')]",
+              "actions": {},
+              "runAfter": {}
+            },
+            "AfterScope": {
+              "type": "Compose",
+              "inputs": "@result('MaybeScope')",
+              "runAfter": {
+                "MaybeScope": [
+                  "Succeeded"
+                ]
+              }
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    }
+  ]
+}

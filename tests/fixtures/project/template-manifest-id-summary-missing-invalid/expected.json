@@ -1,0 +1,14 @@
+[
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/id"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/summary"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "triggers": {
+    "Window": {
+      "type": "SlidingWindow",
+      "recurrence": {
+        "frequency": "Day",
+        "interval": 1,
+        "schedule": {
+          "hours": [
+            10
+          ],
+          "minutes": [
+            30
+          ]
+        }
+      }
+    }
+  },
+  "actions": {}
+}

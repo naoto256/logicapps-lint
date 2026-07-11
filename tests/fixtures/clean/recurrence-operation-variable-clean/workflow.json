@@ -1,0 +1,42 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "When_request_received": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        },
+        "operationOptions": "SuppressWorkflowHeadersOnResponse"
+      },
+      "Every_week": {
+        "type": "Recurrence",
+        "recurrence": {
+          "frequency": "Week",
+          "interval": 1,
+          "schedule": {
+            "weekDays": "Monday"
+          }
+        }
+      }
+    },
+    "actions": {
+      "Initialize_variable": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "value",
+              "type": "string",
+              "value": "ok"
+            }
+          ]
+        },
+        "runAfter": {}
+      }
+    }
+  },
+  "kind": "Stateful"
+}

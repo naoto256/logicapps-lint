@@ -1,0 +1,14 @@
+[
+  {
+    "code": "wdl-invalid-context",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/triggers/manual/trackedProperties/start"
+  },
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/triggers/manual/trackedProperties"
+  }
+]

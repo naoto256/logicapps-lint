@@ -1,0 +1,67 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "manual": {
+        "kind": "Http",
+        "type": "Request",
+        "inputs": {
+          "schema": {
+            "type": "array"
+          }
+        }
+      }
+    },
+    "actions": {
+      "Scope_block": {
+        "type": "Scope",
+        "actions": {
+          "Compose": {
+            "type": "Compose",
+            "inputs": "ok",
+            "runAfter": {}
+          }
+        },
+        "runAfter": {}
+      },
+      "Until_loop": {
+        "type": "Until",
+        "expression": "@equals(1, 1)",
+        "limit": {
+          "count": 2,
+          "timeout": "PT1M"
+        },
+        "actions": {
+          "Use_Loop_Functions": {
+            "type": "Compose",
+            "inputs": {
+              "index": "@iterationIndexes('Until_loop')"
+            },
+            "runAfter": {}
+          }
+        },
+        "runAfter": {
+          "Scope_block": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Use_Result": {
+        "type": "Compose",
+        "inputs": {
+          "scope": "@result('Scope_block')",
+          "until": "@result('Until_loop')"
+        },
+        "runAfter": {
+          "Until_loop": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

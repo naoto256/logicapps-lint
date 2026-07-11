@@ -1,0 +1,20 @@
+[
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/details/Type"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/skus/0"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/workflows"
+  }
+]

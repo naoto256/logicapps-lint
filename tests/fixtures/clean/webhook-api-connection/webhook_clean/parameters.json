@@ -1,0 +1,6 @@
+{
+  "mailboxAddress": {
+    "type": "String",
+    "value": "alerts@example.com"
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Producer/runtimeConfiguration/secureData/properties"
+  },
+  {
+    "code": "runafter-invalid-shape",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Consumer/runAfter/Producer"
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/connections/bad name_#workflowname#"
+  },
+  {
+    "code": "project-missing-connection-reference",
+    "severity": "error",
+    "path": "default/workflow.json",
+    "pointer": "/actions/Call/inputs/serviceProviderConfiguration/connectionName"
+  }
+]

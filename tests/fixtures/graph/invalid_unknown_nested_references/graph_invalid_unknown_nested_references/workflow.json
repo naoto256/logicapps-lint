@@ -1,0 +1,63 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "actions": {
+      "Outer_scope": {
+        "type": "Scope",
+        "actions": {
+          "Known_inner": {
+            "type": "Compose",
+            "inputs": "known",
+            "runAfter": {}
+          },
+          "Use_missing_output": {
+            "type": "Compose",
+            "inputs": "@outputs('Missing_inner')",
+            "runAfter": {
+              "Known_inner": [
+                "Succeeded"
+              ]
+            }
+          },
+          "Use_missing_action_status": {
+            "type": "If",
+            "expression": "@equals(actions('Missing_status').status, 'Succeeded')",
+            "actions": {
+              "When_true": {
+                "type": "Compose",
+                "inputs": true,
+                "runAfter": {}
+              }
+            },
+            "else": {
+              "actions": {
+                "When_false": {
+                  "type": "Compose",
+                  "inputs": false,
+                  "runAfter": {}
+                }
+              }
+            },
+            "runAfter": {
+              "Use_missing_output": [
+                "Succeeded"
+              ]
+            }
+          }
+        },
+        "runAfter": {}
+      }
+    },
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    }
+  },
+  "kind": "Stateful"
+}

@@ -1,0 +1,40 @@
+use crate::diagnostic::{ByteSpan, Diagnostic};
+use crate::json::{JsonFile, as_object, as_string, get, pointer_join, span};
+use crate::workflow::{ActionKind, Workflow};
+
+mod actions;
+mod arm_boundary;
+mod common;
+mod content_transfer;
+mod ctx;
+mod definition_io;
+mod dynamic_wdl;
+mod field_validators;
+mod http;
+mod http_uri;
+mod limits;
+mod materialized;
+mod numbers;
+mod operation_options;
+mod operations;
+mod registry;
+mod required_fields;
+mod root;
+mod run_after;
+mod runtime;
+mod secure_data;
+mod static_results;
+mod time;
+mod triggers;
+
+use arm_boundary::*;
+use ctx::{ShapeCtx, Site};
+use dynamic_wdl::*;
+use field_validators::*;
+use http_uri::*;
+use numbers::*;
+use required_fields::*;
+use run_after::*;
+use time::*;
+
+pub(super) use root::shape_diagnostics;

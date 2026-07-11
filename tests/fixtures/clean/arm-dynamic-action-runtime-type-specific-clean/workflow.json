@@ -1,0 +1,88 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "loopType": {
+      "type": "string"
+    },
+    "httpType": {
+      "type": "string"
+    },
+    "secureType": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "wf",
+      "location": "westus",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+          "contentVersion": "1.0.0.0",
+          "triggers": {
+            "manual": {
+              "type": "Request",
+              "kind": "Http",
+              "inputs": {
+                "schema": {}
+              }
+            }
+          },
+          "actions": {
+            "MaybeLoop": {
+              "type": "[parameters('loopType')]",
+              "foreach": [],
+              "actions": {},
+              "runtimeConfiguration": {
+                "concurrency": {
+                  "repetitions": 2
+                }
+              },
+              "runAfter": {}
+            },
+            "MaybeHttp": {
+              "type": "[parameters('httpType')]",
+              "inputs": {
+                "method": "GET",
+                "uri": "https://example.invalid"
+              },
+              "runtimeConfiguration": {
+                "contentTransfer": {
+                  "transferMode": "Chunked"
+                }
+              },
+              "runAfter": {
+                "MaybeLoop": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "MaybeSecure": {
+              "type": "[parameters('secureType')]",
+              "inputs": {
+                "method": "GET",
+                "uri": "https://example.invalid"
+              },
+              "runtimeConfiguration": {
+                "secureData": {
+                  "properties": [
+                    "outputs"
+                  ]
+                }
+              },
+              "runAfter": {
+                "MaybeHttp": [
+                  "Succeeded"
+                ]
+              }
+            }
+          },
+          "outputs": {}
+        }
+      }
+    }
+  ]
+}

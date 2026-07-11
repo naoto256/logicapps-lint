@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "triggers": {
+    "Poll": {
+      "type": "ApiConnection",
+      "inputs": {
+        "host": { "connection": { "name": "conn" } },
+        "method": "GET",
+        "path": "/items"
+      },
+      "recurrence": { "frequency": "Minute", "interval": 1 },
+      "runtimeConfiguration": {
+        "concurrency": { "maximumWaitingRuns": 50 }
+      }
+    }
+  },
+  "actions": {},
+  "outputs": {}
+}

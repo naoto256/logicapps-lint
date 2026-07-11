@@ -1,0 +1,59 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Basic": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.invalid",
+          "authentication": {
+            "type": "Basic",
+            "username": "user"
+          }
+        },
+        "runAfter": {}
+      },
+      "Certificate": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.invalid",
+          "authentication": {
+            "type": "ClientCertificate"
+          }
+        },
+        "runAfter": {}
+      },
+      "ManagedIdentity": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.invalid",
+          "authentication": {
+            "type": "ManagedServiceIdentity"
+          }
+        },
+        "runAfter": {}
+      },
+      "OAuth": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.invalid",
+          "authentication": {
+            "type": "ActiveDirectoryOAuth",
+            "tenant": "tenant",
+            "audience": "https://example.invalid",
+            "clientId": "client"
+          }
+        },
+        "runAfter": {}
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

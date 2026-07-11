@@ -1,0 +1,26 @@
+[
+  {
+    "code": "arm-missing-workflow-parameter",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/parameters/Known"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Format_Int/inputs"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Json_Format/inputs/message"
+  },
+  {
+    "code": "project-missing-definition-parameter",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Use_Parameter/inputs"
+  }
+]

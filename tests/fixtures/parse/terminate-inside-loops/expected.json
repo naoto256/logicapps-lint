@@ -1,0 +1,14 @@
+[
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Workflow/workflow.json",
+    "pointer": "/definition/actions/Loop/actions/Stop"
+  },
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Workflow/workflow.json",
+    "pointer": "/definition/actions/Until_Loop/actions/Stop_Until"
+  }
+]

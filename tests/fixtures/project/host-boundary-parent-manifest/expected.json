@@ -1,0 +1,14 @@
+[
+  {
+    "code": "project-missing-connection-reference",
+    "severity": "error",
+    "path": "ChildApp/Workflow/workflow.json",
+    "pointer": "/definition/actions/Use_Connection/inputs/host/connection/referenceName"
+  },
+  {
+    "code": "project-missing-root-parameter",
+    "severity": "error",
+    "path": "ChildApp/Workflow/workflow.json",
+    "pointer": "/definition/parameters/NeedsChildValue"
+  }
+]

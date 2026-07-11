@@ -1,0 +1,56 @@
+[
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Route_BadExpression/expression"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Condition/actions"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Condition/expression"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Route/cases"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Route/expression"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/frequency"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/interval"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/manual/type"
+  }
+]

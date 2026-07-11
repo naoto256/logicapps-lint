@@ -1,0 +1,42 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Bad_Foreach": {
+        "type": "Foreach",
+        "foreach": {},
+        "actions": {},
+        "runAfter": {}
+      },
+      "Bad_If": {
+        "type": "If",
+        "expression": [],
+        "actions": {},
+        "runAfter": {
+          "Bad_Foreach": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Until": {
+        "type": "Until",
+        "expression": [],
+        "actions": {},
+        "limit": {
+          "count": 1,
+          "timeout": "PT1M"
+        },
+        "runAfter": {
+          "Bad_If": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

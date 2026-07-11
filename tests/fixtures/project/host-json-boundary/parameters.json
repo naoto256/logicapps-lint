@@ -1,0 +1,6 @@
+{
+  "NeedsChildValue": {
+    "type": "String",
+    "value": "parent"
+  }
+}

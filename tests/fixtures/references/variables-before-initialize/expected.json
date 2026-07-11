@@ -1,0 +1,8 @@
+[
+  {
+    "code": "variable-reference-not-initialized",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Use_Late/inputs"
+  }
+]

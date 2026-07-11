@@ -1,0 +1,64 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {},
+        "operationOptions": "SingleInstance",
+        "runtimeConfiguration": {
+          "maximumWaitingRuns": 0,
+          "concurrency": {
+            "runs": "2"
+          },
+          "paginationPolicy": {
+            "minimumItemCount": "many"
+          },
+          "contentTransfer": {
+            "transferMode": "Inline"
+          },
+          "secureData": {
+            "properties": [
+              "body",
+              7
+            ]
+          },
+          "staticResult": {
+            "name": "MissingStaticResult"
+          }
+        }
+      }
+    },
+    "actions": {
+      "For_each": {
+        "type": "Foreach",
+        "foreach": [],
+        "actions": {},
+        "operationOptions": "Sequential",
+        "runtimeConfiguration": {
+          "concurrency": {
+            "repetitions": 1
+          }
+        },
+        "runAfter": {}
+      },
+      "Bad_Concurrency": {
+        "type": "Compose",
+        "inputs": {},
+        "runtimeConfiguration": {
+          "concurrency": "bad"
+        },
+        "runAfter": {
+          "For_each": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

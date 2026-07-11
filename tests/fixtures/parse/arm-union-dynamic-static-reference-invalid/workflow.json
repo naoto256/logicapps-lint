@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "baseDefinition": {
+      "type": "object"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "wf",
+      "location": "westus",
+      "properties": {
+        "definition": "[union(parameters('baseDefinition'), createObject('$schema', 'https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#', 'contentVersion', '1.0.0.0', 'triggers', createObject('manual', createObject('type', 'Request', 'kind', 'Http', 'inputs', createObject('schema', '@{outputs(''Later'')}'))), 'actions', createObject('Later', createObject('type', 'Compose', 'inputs', 'ok', 'runAfter', createObject())), 'outputs', createObject()))]"
+      }
+    }
+  ]
+}

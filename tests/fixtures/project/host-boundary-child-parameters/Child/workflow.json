@@ -1,0 +1,38 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "ChildOnly": {
+        "type": "String"
+      }
+    },
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Use_Parameter": {
+        "type": "Compose",
+        "inputs": "@parameters('ChildOnly')",
+        "runAfter": {}
+      },
+      "Use_Connection": {
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "referenceName": "office365"
+            }
+          },
+          "method": "GET",
+          "path": "/mail"
+        },
+        "runAfter": {
+          "Use_Parameter": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

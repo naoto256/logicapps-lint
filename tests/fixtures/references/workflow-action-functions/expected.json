@@ -1,0 +1,20 @@
+[
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Use_Form_Functions/inputs"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Use_Form_Functions/inputs"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Use_Form_Functions/inputs"
+  }
+]

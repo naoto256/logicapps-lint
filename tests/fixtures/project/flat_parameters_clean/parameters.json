@@ -1,0 +1,6 @@
+{
+  "queueName": {
+    "type": "String",
+    "value": "orders"
+  }
+}

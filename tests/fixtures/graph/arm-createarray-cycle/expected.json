@@ -1,0 +1,14 @@
+[
+  {
+    "code": "runafter-cycle",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/A/runAfter/B"
+  },
+  {
+    "code": "runafter-cycle",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/B/runAfter/A"
+  }
+]

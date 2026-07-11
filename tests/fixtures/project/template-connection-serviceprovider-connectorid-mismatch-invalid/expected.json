@@ -1,0 +1,8 @@
+[
+  {
+    "code": "project-missing-connection-reference",
+    "severity": "error",
+    "path": "default/workflow.json",
+    "pointer": "/actions/Use_Template_Metadata/inputs/serviceProviderConfiguration/connectionName"
+  }
+]

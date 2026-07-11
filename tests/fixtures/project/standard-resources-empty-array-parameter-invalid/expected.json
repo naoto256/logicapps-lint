@@ -1,0 +1,8 @@
+[
+  {
+    "code": "project-missing-root-parameter",
+    "severity": "error",
+    "path": "parameters.json",
+    "pointer": "/NeedsValue"
+  }
+]

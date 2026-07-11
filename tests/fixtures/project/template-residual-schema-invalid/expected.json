@@ -1,0 +1,62 @@
+[
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/artifacts/0/file"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/kinds/0"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/prerequisites"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/summary"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/title"
+  },
+  {
+    "code": "template-manifest-missing-file",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/artifacts/0/file"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/details/Category"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/id"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/summary"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/tags/0"
+  }
+]

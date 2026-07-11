@@ -1,0 +1,51 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Run_JavaScript": {
+        "type": "JavaScriptCode",
+        "inputs": {
+          "code": "return workflowContext.actions;"
+        },
+        "runAfter": {}
+      },
+      "Webhook": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "subscribe": {
+            "method": "POST",
+            "uri": "https://example.invalid/subscribe"
+          },
+          "unsubscribe": {
+            "method": "DELETE",
+            "uri": "https://example.invalid/unsubscribe"
+          }
+        },
+        "runAfter": {
+          "Run_JavaScript": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Parse": {
+        "type": "ParseJson",
+        "inputs": {
+          "content": "{}",
+          "schema": {
+            "type": "object"
+          }
+        },
+        "runAfter": {
+          "Webhook": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

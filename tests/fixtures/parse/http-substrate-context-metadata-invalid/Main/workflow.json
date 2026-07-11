@@ -1,0 +1,121 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "description": {
+      "not": "a string"
+    },
+    "parameters": {
+      "varName": {
+        "type": "String",
+        "defaultValue": "bad",
+        "description": [
+          "not",
+          "a string"
+        ]
+      }
+    },
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    },
+    "actions": {
+      "Bad_Workflow": {
+        "type": "Workflow",
+        "inputs": {
+          "host": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Logic/workflows/child",
+            "triggerName": "manual"
+          },
+          "authentication": 42,
+          "retryPolicy": "not-an-object"
+        },
+        "runAfter": {}
+      },
+      "Bad_Retry": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.invalid",
+          "retryPolicy": {
+            "type": "Fixed"
+          }
+        },
+        "runAfter": {
+          "Bad_Workflow": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Response_Headers": {
+        "type": "Response",
+        "inputs": {
+          "statusCode": 200,
+          "headers": {
+            "x-bad": [
+              "not",
+              "scalar"
+            ]
+          }
+        },
+        "runAfter": {
+          "Bad_Retry": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Tracked_Dynamic": {
+        "type": "Compose",
+        "inputs": "tracked",
+        "trackedProperties": {
+          "bad": "@variables(parameters('varName'))"
+        },
+        "runAfter": {
+          "Bad_Response_Headers": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Action_Context_Substring": {
+        "type": "HttpWebhook",
+        "inputs": {
+          "subscribe": {
+            "method": "POST",
+            "uri": "https://example.invalid/subscribe",
+            "body": {
+              "inputs": {
+                "unsubscribe": {
+                  "shadow": "@action().outputs"
+                }
+              }
+            }
+          },
+          "unsubscribe": {
+            "method": "DELETE",
+            "uri": "https://example.invalid/unsubscribe"
+          }
+        },
+        "runAfter": {
+          "Bad_Tracked_Dynamic": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {
+      "O": {
+        "type": "String",
+        "description": {
+          "not": "a string"
+        },
+        "value": "ok"
+      }
+    }
+  },
+  "kind": "Stateful"
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "endpoint": { "type": "String", "defaultValue": "https://example.invalid" },
+    "retryType": { "type": "String", "defaultValue": "Fixed" },
+    "seconds": { "type": "String", "defaultValue": "5" }
+  },
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http",
+      "inputs": { "schema": {} }
+    }
+  },
+  "actions": {
+    "Call": {
+      "type": "Http",
+      "inputs": {
+        "method": "GET",
+        "uri": "@{concat(parameters('endpoint'), '/api')}"
+      },
+      "retryPolicy": {
+        "type": "@parameters('retryType')",
+        "interval": "PT@{parameters('seconds')}S",
+        "count": 2
+      },
+      "runAfter": {}
+    }
+  },
+  "outputs": {}
+}

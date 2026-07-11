@@ -1,0 +1,14 @@
+{
+  "id": "default",
+  "title": "Default Workflow",
+  "summary": "Default workflow.",
+  "description": "Default workflow.",
+  "artifacts": [
+    { "type": "workflow", "file": "workflow.json" }
+  ],
+  "images": {
+    "bad name": "missing"
+  },
+  "parameters": [],
+  "connections": {}
+}

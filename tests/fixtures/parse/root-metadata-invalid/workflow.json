@@ -1,0 +1,6 @@
+{
+  "$schema": "https://example.invalid/not-workflowdefinition.json#",
+  "contentVersion": "v1",
+  "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+  "actions": {}
+}

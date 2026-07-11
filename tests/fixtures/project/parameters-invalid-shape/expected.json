@@ -1,0 +1,8 @@
+[
+  {
+    "code": "project-parameter-invalid-shape",
+    "severity": "error",
+    "path": "parameters.json",
+    "pointer": "/queueName"
+  }
+]

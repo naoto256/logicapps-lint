@@ -1,0 +1,9 @@
+{
+  "id": "pkg",
+  "title": "Workflow",
+  "summary": "Workflow",
+  "skus": ["consumption"],
+  "workflows": { "default": { "name": "Default" } },
+  "featuredConnectors": [],
+  "details": { "By": "Microsoft", "Type": "Workflow" }
+}

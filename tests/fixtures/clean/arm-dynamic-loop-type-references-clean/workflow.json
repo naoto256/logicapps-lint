@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "loopType": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "dynamic-foreach",
+      "location": "eastus",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {
+            "Loop": {
+              "type": "[parameters('loopType')]",
+              "foreach": "@triggerBody()",
+              "actions": {
+                "Use_Item": {
+                  "type": "Compose",
+                  "inputs": {
+                    "named": "@items('Loop')",
+                    "current": "@item()"
+                  },
+                  "runAfter": {}
+                }
+              },
+              "runAfter": {}
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "dynamic-until",
+      "location": "eastus",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {
+            "Loop": {
+              "type": "[parameters('loopType')]",
+              "expression": "@equals(body('Poll'), 'done')",
+              "actions": {
+                "Poll": {
+                  "type": "Compose",
+                  "inputs": "done",
+                  "runAfter": {}
+                },
+                "Use_Index": {
+                  "type": "Compose",
+                  "inputs": "@iterationIndexes('Loop')",
+                  "runAfter": {}
+                }
+              },
+              "runAfter": {}
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    }
+  ]
+}

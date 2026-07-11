@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "countSuffix": {
+      "type": "String",
+      "defaultValue": "0"
+    },
+    "minutes": {
+      "type": "String",
+      "defaultValue": "1"
+    }
+  },
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http",
+      "inputs": {
+        "schema": {}
+      }
+    }
+  },
+  "actions": {
+    "Loop": {
+      "type": "Until",
+      "expression": "@equals(1, 1)",
+      "limit": {
+        "count": "1@{parameters('countSuffix')}",
+        "timeout": "PT@{parameters('minutes')}M"
+      },
+      "actions": {},
+      "runAfter": {}
+    },
+    "Route": {
+      "type": "Switch",
+      "expression": "@triggerBody()?['route']",
+      "cases": {
+        "First": {
+          "case": "first",
+          "actions": {}
+        }
+      },
+      "default": {},
+      "runAfter": {
+        "Loop": [
+          "Succeeded"
+        ]
+      }
+    }
+  }
+}

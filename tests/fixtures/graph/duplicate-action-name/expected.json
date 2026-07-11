@@ -1,0 +1,14 @@
+[
+  {
+    "code": "duplicate-action-name",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Scope/actions/Init"
+  },
+  {
+    "code": "unknown-runafter-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Scope/actions/Init/runAfter/Definitely_Missing"
+  }
+]

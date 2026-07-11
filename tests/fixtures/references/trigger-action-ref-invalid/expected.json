@@ -1,0 +1,20 @@
+[
+  {
+    "code": "action-reference-not-runafter",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/manual/splitOn"
+  },
+  {
+    "code": "variable-reference-not-initialized",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/manual/correlation/clientTrackingId"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Use_Trigger_Name/inputs"
+  }
+]

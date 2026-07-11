@@ -1,0 +1,20 @@
+[
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Use_Format_Wdl/inputs"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Use_Format_Placeholder/inputs"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Use_Json_Wdl/inputs/message"
+  }
+]

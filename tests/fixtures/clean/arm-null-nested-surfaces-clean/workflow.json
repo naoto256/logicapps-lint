@@ -1,0 +1,66 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "wf",
+      "location": "eastus",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {
+            "manual": {
+              "type": "Request",
+              "kind": "Http",
+              "inputs": null,
+              "splitOn": null,
+              "conditions": "[json('null')]",
+              "operationOptions": null,
+              "runtimeConfiguration": {
+                "concurrency": null
+              }
+            },
+            "Poll": {
+              "type": "Http",
+              "recurrence": {
+                "frequency": "Minute",
+                "interval": 1
+              },
+              "inputs": {
+                "method": "GET",
+                "uri": "https://example.invalid",
+                "retryPolicy": "[json('null')]"
+              }
+            }
+          },
+          "actions": {
+            "C": {
+              "type": "Compose",
+              "kind": "[json('null')]",
+              "inputs": "ok",
+              "runAfter": {},
+              "trackedProperties": null,
+              "operationOptions": null,
+              "runtimeConfiguration": {
+                "staticResult": "[json('null')]",
+                "paginationPolicy": null,
+                "contentTransfer": "[json('null')]",
+                "secureData": {
+                  "properties": [
+                    "inputs"
+                  ]
+                }
+              },
+              "limit": null
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    }
+  ]
+}

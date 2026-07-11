@@ -1,0 +1,20 @@
+[
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Empty_Function/inputs/function"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Method/inputs/method"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Trace_Method/inputs/method"
+  }
+]

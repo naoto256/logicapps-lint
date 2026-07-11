@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "sample",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "parameters": "[json('{\"Known\":{\"type\":\"String\"}}')]",
+          "actions": {
+            "Format_Int": {
+              "type": "Compose",
+              "inputs": "[format('@{{outputs(''Missing_{0}'')}}', 1)]",
+              "runAfter": {}
+            },
+            "Json_Format": {
+              "type": "Compose",
+              "inputs": "[json(format('{\"message\":\"@{{outputs(''Missing_{0}'')}}\"}', 'Action'))]",
+              "runAfter": {
+                "Format_Int": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Use_Parameter": {
+              "type": "Compose",
+              "inputs": "@{parameters('Known')} @{parameters('Missing')}",
+              "runAfter": "[json('{\"Json_Format\":[\"Succeeded\"]}')]"
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    }
+  ]
+}

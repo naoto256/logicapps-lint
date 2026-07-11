@@ -1,0 +1,6 @@
+{
+  "apiKey": {
+    "type": "String",
+    "value": "from-parent"
+  }
+}

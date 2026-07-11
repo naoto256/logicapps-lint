@@ -1,0 +1,14 @@
+[
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "graph_invalid_unknown_nested_references/workflow.json",
+    "pointer": "/definition/actions/Outer_scope/actions/Use_missing_output/inputs"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "graph_invalid_unknown_nested_references/workflow.json",
+    "pointer": "/definition/actions/Outer_scope/actions/Use_missing_action_status/expression"
+  }
+]

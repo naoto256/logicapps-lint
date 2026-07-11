@@ -1,0 +1,26 @@
+{
+  "id": "default",
+  "title": "Default Workflow",
+  "summary": "Default workflow.",
+  "artifacts": [
+    { "type": "workflow", "file": "workflow.json" }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "parameters": [
+    {
+      "name": "threshold_#workflowname#",
+      "displayName": "Threshold",
+      "type": "Int",
+      "description": "Threshold value.",
+      "required": true,
+      "allowedValues": [
+        { "value": 42 },
+        { "displayName": "Missing value" }
+      ]
+    }
+  ],
+  "connections": {}
+}

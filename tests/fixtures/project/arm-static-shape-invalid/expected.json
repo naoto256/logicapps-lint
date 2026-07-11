@@ -1,0 +1,20 @@
+[
+  {
+    "code": "workflow-shape-unknown-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Bad/type"
+  },
+  {
+    "code": "runafter-invalid-status",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/B/runAfter/A/0"
+  },
+  {
+    "code": "workflow-shape-unknown-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/triggers/BadTrigger/type"
+  }
+]

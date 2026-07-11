@@ -1,0 +1,52 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "manual": {
+        "kind": "Http",
+        "type": "Request",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    },
+    "actions": {
+      "KnownAction": {
+        "type": "Compose",
+        "inputs": "ok",
+        "runAfter": {}
+      },
+      "UseActions": {
+        "type": "Compose",
+        "inputs": "@actions('MissingAction')",
+        "runAfter": {
+          "KnownAction": [
+            "Succeeded"
+          ]
+        }
+      },
+      "UseOutputs": {
+        "type": "Compose",
+        "inputs": "@outputs('MissingAction')",
+        "runAfter": {
+          "UseActions": [
+            "Succeeded"
+          ]
+        }
+      },
+      "UseBody": {
+        "type": "Compose",
+        "inputs": "@body('MissingAction')",
+        "runAfter": {
+          "UseOutputs": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

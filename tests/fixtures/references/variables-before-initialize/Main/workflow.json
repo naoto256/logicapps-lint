@@ -1,0 +1,42 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "manual": {
+        "kind": "Http",
+        "type": "Request",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    },
+    "actions": {
+      "Use_Late": {
+        "type": "Compose",
+        "inputs": "@variables('late')",
+        "runAfter": {}
+      },
+      "Initialize_Late": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "late",
+              "type": "String",
+              "value": "too late"
+            }
+          ]
+        },
+        "runAfter": {
+          "Use_Late": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

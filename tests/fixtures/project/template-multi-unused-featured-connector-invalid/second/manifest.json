@@ -1,0 +1,17 @@
+{
+  "id": "second",
+  "title": "Second",
+  "summary": "Second.",
+  "artifacts": [
+    {
+      "type": "workflow",
+      "file": "workflow.json"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "parameters": [],
+  "connections": {}
+}

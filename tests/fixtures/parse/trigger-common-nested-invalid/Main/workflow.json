@@ -1,0 +1,31 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {},
+        "conditions": [
+          true,
+          {
+            "expression": 42
+          }
+        ],
+        "correlation": {
+          "clientTrackingId": 123
+        },
+        "splitOnConfiguration": {
+          "correlation": {
+            "clientTrackingId": 42
+          }
+        }
+      }
+    },
+    "actions": {},
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

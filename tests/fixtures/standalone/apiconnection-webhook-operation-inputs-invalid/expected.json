@@ -1,0 +1,20 @@
+[
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/actions/Bad_Webhook/inputs/subscribe/authentication"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/actions/Bad_Webhook/inputs/subscribe/headers"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/actions/Bad_Webhook/inputs/subscribe/queries"
+  }
+]

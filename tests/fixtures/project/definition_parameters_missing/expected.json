@@ -1,0 +1,8 @@
+[
+  {
+    "code": "project-missing-definition-parameter",
+    "severity": "error",
+    "path": "definition_parameters_missing/workflow.json",
+    "pointer": "/definition/actions/Compose_tenant/inputs"
+  }
+]

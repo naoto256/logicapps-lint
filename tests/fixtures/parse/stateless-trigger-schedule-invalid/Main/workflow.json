@@ -1,0 +1,34 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "Window": {
+        "type": "SlidingWindow",
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 1
+        }
+      },
+      "Polling": {
+        "type": "ApiConnection",
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 5
+        },
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "conn"
+            }
+          },
+          "method": "get",
+          "path": "/datasets/default/triggers/onupdatedfile"
+        }
+      }
+    },
+    "actions": {},
+    "outputs": {}
+  },
+  "kind": "Stateless"
+}

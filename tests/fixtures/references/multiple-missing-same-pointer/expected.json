@@ -1,0 +1,14 @@
+[
+  {
+    "code": "project-missing-definition-parameter",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Use_Missing_Parameters/inputs"
+  },
+  {
+    "code": "project-missing-definition-parameter",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Use_Missing_Parameters/inputs"
+  }
+]

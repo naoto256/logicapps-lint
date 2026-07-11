@@ -1,0 +1,26 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Call": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.invalid",
+          "retryPolicy": {
+            "type": "Exponential",
+            "count": 1,
+            "interval": "PT10S",
+            "minimumInterval": "PT30S",
+            "maximumInterval": "PT5S"
+          }
+        },
+        "runAfter": {}
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

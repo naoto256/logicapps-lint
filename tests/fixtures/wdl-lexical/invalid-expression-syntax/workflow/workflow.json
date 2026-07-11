@@ -1,0 +1,62 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "A": {
+        "type": "Compose",
+        "inputs": "a",
+        "runAfter": {}
+      },
+      "UnclosedCall": {
+        "type": "Compose",
+        "inputs": "@outputs('A'",
+        "runAfter": {
+          "A": [
+            "Succeeded"
+          ]
+        }
+      },
+      "MismatchedDelimiters": {
+        "type": "Compose",
+        "inputs": "@length([1, 2, 3)",
+        "runAfter": {
+          "UnclosedCall": [
+            "Succeeded"
+          ]
+        }
+      },
+      "MissingArgument": {
+        "type": "Compose",
+        "inputs": "@outputs()",
+        "runAfter": {
+          "MismatchedDelimiters": [
+            "Succeeded"
+          ]
+        }
+      },
+      "DoubleQuote": {
+        "type": "Compose",
+        "inputs": "@concat(\"outputs('Missing')\", 'ok')",
+        "runAfter": {
+          "MissingArgument": [
+            "Succeeded"
+          ]
+        }
+      },
+      "SingleConcat": {
+        "type": "Compose",
+        "inputs": "@concat('one')",
+        "runAfter": {
+          "DoubleQuote": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

@@ -1,0 +1,6 @@
+{
+  "tenantName": {
+    "type": "String",
+    "value": "contoso"
+  }
+}

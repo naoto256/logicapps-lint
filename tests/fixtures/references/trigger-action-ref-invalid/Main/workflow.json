@@ -1,0 +1,53 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "actions": {
+      "Init": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "v",
+              "type": "String",
+              "value": "x"
+            }
+          ]
+        },
+        "runAfter": {}
+      },
+      "Later": {
+        "type": "Compose",
+        "inputs": "later",
+        "runAfter": {
+          "Init": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Use_Trigger_Name": {
+        "type": "Compose",
+        "inputs": "@outputs('manual')",
+        "runAfter": {
+          "Later": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "splitOn": "@outputs('Later')",
+        "correlation": {
+          "clientTrackingId": "@variables('v')"
+        },
+        "inputs": {
+          "schema": {}
+        }
+      }
+    }
+  },
+  "kind": "Stateful"
+}

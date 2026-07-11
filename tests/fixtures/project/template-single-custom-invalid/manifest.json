@@ -1,0 +1,9 @@
+{
+  "id": "template-single-custom-invalid",
+  "title": "Workflow",
+  "summary": "Workflow",
+  "skus": ["consumption"],
+  "workflows": { "custom": { "name": "Custom" } },
+  "featuredConnectors": [],
+  "details": { "By": "Microsoft", "Type": "Workflow" }
+}

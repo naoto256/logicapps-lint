@@ -1,0 +1,211 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": [],
+    "triggers": {
+      "Bad_Request_Method": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "method": "BREW"
+        }
+      },
+      "Bad_Batch_Mode": {
+        "type": "Batch",
+        "inputs": {
+          "mode": "External"
+        }
+      },
+      "Bad_Recurrence_Weekday": {
+        "type": "Recurrence",
+        "recurrence": {
+          "frequency": "Week",
+          "interval": 1,
+          "schedule": {
+            "weekDays": [
+              "Funday"
+            ]
+          }
+        }
+      },
+      "Bad_Shared_Trigger_Fields": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {},
+        "splitOn": 42,
+        "conditions": "not-array",
+        "correlation": "not-object"
+      }
+    },
+    "actions": {
+      "Bad_Http_Method": {
+        "type": "Http",
+        "inputs": {
+          "method": "BREW",
+          "uri": "https://example.invalid"
+        },
+        "runAfter": {}
+      },
+      "Bad_Expression_Kind": {
+        "type": "Expression",
+        "kind": "Bogus",
+        "inputs": {},
+        "runAfter": {
+          "Bad_Http_Method": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Liquid_Kind": {
+        "type": "Liquid",
+        "kind": "YamlToYaml",
+        "inputs": {
+          "content": {},
+          "integrationAccount": {
+            "map": {
+              "name": "Map"
+            }
+          }
+        },
+        "runAfter": {
+          "Bad_Expression_Kind": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Table_Format": {
+        "type": "Table",
+        "inputs": {
+          "from": [],
+          "format": "TSV"
+        },
+        "runAfter": {
+          "Bad_Liquid_Kind": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Terminate_Status": {
+        "type": "Terminate",
+        "inputs": {
+          "runStatus": "TimedOut"
+        },
+        "runAfter": {
+          "Bad_Table_Format": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_XmlValidation": {
+        "type": "XmlValidation",
+        "inputs": {},
+        "runAfter": {
+          "Bad_Terminate_Status": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_FlatFile_Nested": {
+        "type": "FlatFileDecoding",
+        "inputs": {
+          "content": "payload",
+          "integrationAccount": {}
+        },
+        "runAfter": {
+          "Bad_XmlValidation": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Liquid_Nested": {
+        "type": "Liquid",
+        "kind": "JsonToJson",
+        "inputs": {
+          "content": {},
+          "integrationAccount": {}
+        },
+        "runAfter": {
+          "Bad_FlatFile_Nested": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_ApiConnection_AccessKey": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "host": {},
+          "method": "GET",
+          "path": "/hook",
+          "accessKeyType": "Tertiary"
+        },
+        "runAfter": {
+          "Bad_Liquid_Nested": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Wait_Unit": {
+        "type": "Wait",
+        "inputs": {
+          "interval": {
+            "count": 1,
+            "unit": "Fortnight"
+          }
+        },
+        "runAfter": {
+          "Bad_ApiConnection_AccessKey": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Artifact_Type": {
+        "type": "IntegrationAccountArtifactLookup",
+        "inputs": {
+          "artifactType": "Cheese"
+        },
+        "runAfter": {
+          "Bad_Wait_Unit": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Function_Uri": {
+        "type": "Function",
+        "inputs": {
+          "uri": 7
+        },
+        "runAfter": {
+          "Bad_Artifact_Type": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Workflow_Host": {
+        "type": "Workflow",
+        "inputs": {
+          "host": {}
+        },
+        "runAfter": {
+          "Bad_Function_Uri": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Xslt_Integration": {
+        "type": "Xslt",
+        "inputs": {
+          "content": "payload",
+          "integrationAccount": {}
+        },
+        "runAfter": {
+          "Bad_Workflow_Host": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

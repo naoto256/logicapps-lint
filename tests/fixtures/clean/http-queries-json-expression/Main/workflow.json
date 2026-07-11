@@ -1,0 +1,20 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Call": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.invalid",
+          "queries": "@json('{\"api-version\":\"2020-01-01\"}')"
+        },
+        "runAfter": {}
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

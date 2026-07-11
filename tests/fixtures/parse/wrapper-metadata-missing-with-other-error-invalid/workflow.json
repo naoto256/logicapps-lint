@@ -1,0 +1,19 @@
+{
+  "definition": {
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": { "schema": {} }
+      }
+    },
+    "actions": {
+      "Bad": {
+        "type": "DefinitelyNotARealAction",
+        "inputs": {},
+        "runAfter": {}
+      }
+    }
+  },
+  "kind": "Stateful"
+}

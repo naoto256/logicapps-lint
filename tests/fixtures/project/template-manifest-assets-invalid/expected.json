@@ -1,0 +1,38 @@
+[
+  {
+    "code": "template-manifest-missing-file",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/artifacts/0/file"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/artifacts/1/type"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/artifacts/1/file"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/images/dark"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/images/light"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/images/preview"
+  }
+]

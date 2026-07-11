@@ -1,0 +1,9 @@
+{
+  "TeamsChannel": {
+    "type": "Object",
+    "value": {
+      "channelID": "channel",
+      "teamID": "team"
+    }
+  }
+}

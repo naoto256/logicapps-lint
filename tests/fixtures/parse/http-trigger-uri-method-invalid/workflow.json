@@ -1,0 +1,19 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "PollHttp": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET",
+          "uri": "ftp://example.invalid/file"
+        },
+        "recurrence": { "frequency": "Minute", "interval": 1 }
+      }
+    },
+    "actions": {},
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "template-parent-schema-artifacts-clean",
+  "title": "Default Workflow",
+  "summary": "Default workflow.",
+  "skus": ["standard"],
+  "workflows": {
+    "default": { "name": "Default" }
+  },
+  "featuredConnectors": [
+    {
+      "id": "connectionProviders/http",
+      "kind": "builtin"
+    }
+  ],
+  "details": {
+    "By": "Microsoft",
+    "Type": "Workflow"
+  },
+  "artifacts": [
+    { "type": "schema", "file": "schema.xsd" }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "customerName": {
+      "type": "String",
+      "defaultValue": "Sophia"
+    }
+  },
+  "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+  "actions": {
+    "Use_Parameter": {
+      "type": "Compose",
+      "inputs": "@parameters('customerName')",
+      "runAfter": {}
+    }
+  },
+  "outputs": {}
+}

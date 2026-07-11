@@ -1,0 +1,17 @@
+{
+  "id": "template-schema-nested-invalid",
+  "title": "Default Workflow",
+  "summary": "Default workflow.",
+  "skus": ["standard"],
+  "workflows": {
+    "Bad_Name": { "name": "Bad Name" }
+  },
+  "featuredConnectors": [],
+  "details": {
+    "By": "Microsoft",
+    "Type": "Workflow"
+  },
+  "artifacts": [
+    { "type": "workflow", "file": "default/workflow.json" }
+  ]
+}

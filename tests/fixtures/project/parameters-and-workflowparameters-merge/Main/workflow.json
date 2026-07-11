@@ -1,0 +1,23 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "fromParameters": {
+        "type": "String"
+      },
+      "fromWorkflowParameters": {
+        "type": "String"
+      }
+    },
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Use_Both": {
+        "type": "Compose",
+        "inputs": "@concat(parameters('fromParameters'), parameters('fromWorkflowParameters'))",
+        "runAfter": {}
+      }
+    }
+  },
+  "kind": "Stateful"
+}

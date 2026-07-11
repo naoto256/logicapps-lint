@@ -1,0 +1,14 @@
+[
+  {
+    "code": "project-parameter-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/parameters/Secret/type"
+  },
+  {
+    "code": "project-parameter-invalid-type",
+    "severity": "error",
+    "path": "parameters.json",
+    "pointer": "/BadType/type"
+  }
+]

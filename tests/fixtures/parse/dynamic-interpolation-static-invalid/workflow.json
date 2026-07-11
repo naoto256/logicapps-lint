@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "freq": { "type": "String", "defaultValue": "" },
+    "prefix": { "type": "String", "defaultValue": "" },
+    "weekday": { "type": "String", "defaultValue": "" },
+    "hostName": { "type": "String", "defaultValue": "" }
+  },
+  "triggers": {
+    "Timer": {
+      "type": "Recurrence",
+      "recurrence": {
+        "frequency": "@{parameters('prefix')}Bogus",
+        "interval": "@{parameters('prefix')}not-an-integer",
+        "schedule": {
+          "weekDays": ["Bad@{parameters('weekday')}"]
+        }
+      }
+    }
+  },
+  "actions": {
+    "Loop": {
+      "type": "Until",
+      "expression": "@equals(1, 1)",
+      "actions": {},
+      "limit": {
+        "count": "@{parameters('prefix')}not-an-integer",
+        "timeout": "@{parameters('prefix')}not-a-duration"
+      },
+      "runAfter": {}
+    },
+    "Call": {
+      "type": "Http",
+      "inputs": {
+        "method": "GET",
+        "uri": "ftp://@{parameters('hostName')}/api"
+      },
+      "runAfter": {
+        "Loop": ["Succeeded"]
+      }
+    }
+  },
+  "outputs": {}
+}

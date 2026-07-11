@@ -1,0 +1,46 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Bad_ApiManagement": {
+        "type": "ApiManagement",
+        "inputs": {
+          "api": {},
+          "pathTemplate": "/items",
+          "method": 42
+        },
+        "runAfter": {}
+      },
+      "Bad_Function": {
+        "type": "Function",
+        "inputs": {
+          "function": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Web/sites/app/functions/fn"
+          },
+          "method": "POST",
+          "queries": [
+            "not",
+            "an",
+            "object"
+          ]
+        },
+        "runAfter": {}
+      },
+      "Bad_Webhook": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "subscribe": {
+            "method": "POST",
+            "uri": "https://example.invalid/subscribe",
+            "retryPolicy": "not-an-object"
+          }
+        },
+        "runAfter": {}
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

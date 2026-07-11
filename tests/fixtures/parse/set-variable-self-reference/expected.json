@@ -1,0 +1,8 @@
+[
+  {
+    "code": "variable-self-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Set_Counter/inputs/value"
+  }
+]

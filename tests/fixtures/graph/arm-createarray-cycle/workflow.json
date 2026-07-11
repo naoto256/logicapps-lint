@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "arm-createarray-cycle",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": "[createObject('A', createObject('type', 'Compose', 'inputs', 'a', 'runAfter', createObject('B', createArray('Succeeded'))), 'B', createObject('type', 'Compose', 'inputs', 'b', 'runAfter', createObject('A', createArray('Succeeded'))))]",
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    }
+  ]
+}

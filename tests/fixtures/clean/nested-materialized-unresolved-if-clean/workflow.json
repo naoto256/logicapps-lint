@@ -1,0 +1,63 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "useBad": {
+      "type": "bool"
+    }
+  },
+  "variables": {
+    "childTemplate": {
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "useBad": {
+          "type": "bool"
+        }
+      },
+      "resources": [
+        {
+          "type": "Microsoft.Logic/workflows",
+          "apiVersion": "2019-05-01",
+          "name": "child",
+          "location": "eastus",
+          "properties": {
+            "definition": {
+              "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+              "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+              "actions": {
+                "Use": {
+                  "type": "Compose",
+                  "inputs": "[if(parameters('useBad'), '@{outputs(''Missing_Action'')}', 'ok')]",
+                  "runAfter": {}
+                }
+              },
+              "outputs": {}
+            },
+            "parameters": {}
+          }
+        }
+      ]
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "child",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "useBad": {
+            "value": "[parameters('useBad')]"
+          }
+        },
+        "template": "[variables('childTemplate')]"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "parameters": [],
+  "title": "Fixture template",
+  "description": "Fixture template.",
+  "artifacts": [
+    {
+      "type": "workflow",
+      "file": "workflow.json"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "id": "ancestor-manifest-shape-invalid",
+  "summary": "Fixture template"
+}

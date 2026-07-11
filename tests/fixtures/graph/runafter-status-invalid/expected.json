@@ -1,0 +1,14 @@
+[
+  {
+    "code": "runafter-invalid-status",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/BadStatus/runAfter/A/0"
+  },
+  {
+    "code": "runafter-invalid-shape",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/BadString/runAfter/A"
+  }
+]

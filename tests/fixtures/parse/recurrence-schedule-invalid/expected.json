@@ -1,0 +1,74 @@
+[
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/weekDays"
+  },
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/hours"
+  },
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/minutes"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/weekDays/0"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/minutes/0"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/minutes/1"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/hours/0"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/monthDays/0"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/monthlyOccurrences/0/occurrence"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/monthlyOccurrences/0/dayOfWeek"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/monthlyOccurrences/1/occurrence"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/monthlyOccurrences/2"
+  }
+]

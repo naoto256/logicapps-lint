@@ -1,0 +1,20 @@
+[
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Foreach/foreach"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_If/expression"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Until/expression"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "title": "Template",
+  "summary": "Template",
+  "kinds": [
+    "stateful"
+  ],
+  "artifacts": [
+    { "type": "workflow", "file": "workflow.json" }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "parameters": [],
+  "connections": [],
+  "description": "Fixture template.",
+  "id": "Main"
+}

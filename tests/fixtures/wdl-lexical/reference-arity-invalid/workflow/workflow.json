@@ -1,0 +1,87 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "A": {
+        "type": "Compose",
+        "inputs": "a",
+        "runAfter": {}
+      },
+      "Bad_Action_Arity": {
+        "type": "Compose",
+        "inputs": "@outputs('A', 'extra')",
+        "runAfter": {
+          "A": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Empty_Outputs": {
+        "type": "Compose",
+        "inputs": "@outputs(,)",
+        "runAfter": {
+          "Bad_Action_Arity": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Empty_FormData": {
+        "type": "Compose",
+        "inputs": "@formDataValue('A',,)",
+        "runAfter": {
+          "Bad_Empty_Outputs": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Empty_Trigger_Helper": {
+        "type": "Compose",
+        "inputs": "@triggerFormDataValue(,)",
+        "runAfter": {
+          "Bad_Empty_FormData": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Action_Function_Arity": {
+        "type": "Compose",
+        "inputs": "@action('unexpected')",
+        "runAfter": {
+          "Bad_Empty_Trigger_Helper": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Malformed_Reference_Arguments": {
+        "type": "Compose",
+        "inputs": "@outputs('A'])",
+        "runAfter": {
+          "Bad_Action_Function_Arity": [
+            "Succeeded"
+          ]
+        }
+      },
+      "For_each": {
+        "type": "Foreach",
+        "foreach": "@createArray('a')",
+        "actions": {
+          "Bad_Item_Arity": {
+            "type": "Compose",
+            "inputs": "@item('unexpected')",
+            "runAfter": {}
+          }
+        },
+        "runAfter": {
+          "Bad_Malformed_Reference_Arguments": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

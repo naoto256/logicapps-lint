@@ -1,0 +1,26 @@
+[
+  {
+    "code": "project-missing-root-parameter",
+    "severity": "error",
+    "path": "child/workflow.json",
+    "pointer": "/definition/parameters/apiKey"
+  },
+  {
+    "code": "project-missing-connection-reference",
+    "severity": "error",
+    "path": "child/workflow.json",
+    "pointer": "/definition/actions/Use_Connection/inputs/host/connection/referenceName"
+  },
+  {
+    "code": "template-workflow-invalid-wrapper",
+    "severity": "error",
+    "path": "child/workflow.json",
+    "pointer": "/definition"
+  },
+  {
+    "code": "template-workflow-invalid-wrapper",
+    "severity": "error",
+    "path": "child/workflow.json",
+    "pointer": "/kind"
+  }
+]

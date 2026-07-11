@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "actions": {
+    "Use_Template_Metadata": {
+      "type": "ServiceProvider",
+      "inputs": {
+        "parameters": {
+          "queueName": "@parameters('TemplateDeploymentName')"
+        },
+        "serviceProviderConfiguration": {
+          "connectionName": "servicebus",
+          "operationId": "sendMessage",
+          "serviceProviderId": "/serviceProviders/serviceBus"
+        }
+      },
+      "runAfter": {}
+    }
+  },
+  "parameters": {},
+  "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}}
+}

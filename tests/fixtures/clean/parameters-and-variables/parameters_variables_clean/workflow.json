@@ -1,0 +1,108 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "tenantCode": {
+        "type": "String",
+        "defaultValue": "soc"
+      },
+      "defaultTags": {
+        "type": "Array",
+        "defaultValue": [
+          "logicapps",
+          "test"
+        ]
+      }
+    },
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "incidentId": {
+                "type": "string"
+              },
+              "entities": {
+                "type": "array"
+              }
+            }
+          }
+        }
+      }
+    },
+    "actions": {
+      "Initialize_Tenant": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "tenant",
+              "type": "String",
+              "value": "@parameters('tenantCode')"
+            }
+          ]
+        },
+        "runAfter": {}
+      },
+      "Initialize_Tag_Count": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "name": "tagCount",
+          "type": "Integer",
+          "value": "@length(parameters('defaultTags'))"
+        },
+        "runAfter": {
+          "Initialize_Tenant": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Compose_Metadata": {
+        "type": "Compose",
+        "inputs": {
+          "tenant": "@variables('tenant')",
+          "tagCount": "@outputs('Initialize_Tag_Count')",
+          "incident": "@triggerBody()?['incidentId']",
+          "description": "Incident @{triggerBody()?['incidentId']} for @{variables('tenant')}"
+        },
+        "runAfter": {
+          "Initialize_Tag_Count": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Scope_Entities": {
+        "type": "Scope",
+        "actions": {
+          "For_each_entity": {
+            "type": "Foreach",
+            "foreach": "@triggerBody()?['entities']",
+            "actions": {
+              "Compose_Entity": {
+                "type": "Compose",
+                "inputs": {
+                  "tenant": "@variables('tenant')",
+                  "entity": "@items('For_each_entity')",
+                  "metadata": "@outputs('Compose_Metadata')"
+                },
+                "runAfter": {}
+              }
+            },
+            "runAfter": {}
+          }
+        },
+        "runAfter": {
+          "Compose_Metadata": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

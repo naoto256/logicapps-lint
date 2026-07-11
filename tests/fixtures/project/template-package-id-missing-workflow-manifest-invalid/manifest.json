@@ -1,0 +1,18 @@
+{
+  "id": "wrong-id",
+  "title": "Fixture template",
+  "summary": "Fixture template.",
+  "skus": [
+    "standard"
+  ],
+  "workflows": {
+    "default": {
+      "name": "Default"
+    }
+  },
+  "featuredConnectors": [],
+  "details": {
+    "By": "Microsoft",
+    "Type": "Workflow"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parameters": {
+    "secretName": {
+      "reference": {
+        "keyVault": {
+          "id": "/providers/Microsoft.KeyVault/vaults/example"
+        },
+        "secretName": "customerName"
+      }
+    }
+  }
+}

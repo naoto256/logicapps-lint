@@ -1,0 +1,12 @@
+{
+  "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+  "actions": {
+    "Bad": {
+      "type": "[concat('Com','pose')]",
+      "inputs": "x",
+      "runAfter": {}
+    }
+  },
+  "parameters": {},
+  "outputs": {}
+}

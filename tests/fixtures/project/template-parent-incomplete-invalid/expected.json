@@ -1,0 +1,6 @@
+[
+  { "code": "template-manifest-missing-field", "severity": "error", "path": "manifest.json", "pointer": "/details" },
+  { "code": "template-manifest-missing-field", "severity": "error", "path": "manifest.json", "pointer": "/featuredConnectors" },
+  { "code": "template-manifest-missing-field", "severity": "error", "path": "manifest.json", "pointer": "/skus" },
+  { "code": "template-manifest-missing-field", "severity": "error", "path": "manifest.json", "pointer": "/workflows" }
+]

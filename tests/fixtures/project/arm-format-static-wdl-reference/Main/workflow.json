@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "sample",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {
+            "Use_Format_Wdl": {
+              "type": "Compose",
+              "inputs": "[format('@{{outputs(''Missing_Format'')}}')]",
+              "runAfter": {}
+            },
+            "Use_Format_Placeholder": {
+              "type": "Compose",
+              "inputs": "[format('@{{outputs(''Missing_{0}'')}}', 'Action')]",
+              "runAfter": {
+                "Use_Format_Wdl": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Use_Json_Wdl": {
+              "type": "Compose",
+              "inputs": "[json('{\"message\":\"@{outputs(''Missing_Json'')}\"}')]",
+              "runAfter": {
+                "Use_Format_Placeholder": [
+                  "Succeeded"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

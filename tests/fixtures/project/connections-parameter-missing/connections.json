@@ -1,0 +1,7 @@
+{
+  "managedApiConnections": {
+    "blob": {
+      "authentication": "@parameters('blob_auth')"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "managedApiConnections": {
+    "blob": {
+      "authentication": "@concat(parameters('missingA'), parameters('missingB'))"
+    }
+  }
+}

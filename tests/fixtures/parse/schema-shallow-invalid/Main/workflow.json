@@ -1,0 +1,142 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "BadParam": {
+        "type": "Cheese",
+        "defaultValue": "bad"
+      },
+      "LowerParam": {
+        "type": "string",
+        "defaultValue": "bad"
+      },
+      "BadAllowedValues": {
+        "type": "String",
+        "defaultValue": "bad",
+        "allowedValues": "not-array"
+      }
+    },
+    "triggers": {
+      "Bad_Http_Method": {
+        "type": "Http",
+        "description": 1,
+        "operationOptions": 1,
+        "runtimeConfiguration": "bad",
+        "inputs": {
+          "method": "BREW",
+          "uri": "https://example.invalid"
+        }
+      },
+      "Lower_Http_Method": {
+        "type": "Http",
+        "inputs": {
+          "method": "get",
+          "uri": "https://example.invalid"
+        }
+      },
+      "Bad_ApiConnection_AccessKey": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "host": {},
+          "path": "/hook",
+          "accessKeyType": "Tertiary"
+        }
+      },
+      "Lower_ApiConnection_AccessKey": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "host": {},
+          "path": "/hook",
+          "accessKeyType": "primary"
+        }
+      },
+      "Bad_Split_Config": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {},
+        "splitOnConfiguration": "not-object"
+      },
+      "Bad_Recurrence_Interval": {
+        "type": "Recurrence",
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 0
+        }
+      }
+    },
+    "actions": {
+      "Bad_Wait_Both": {
+        "type": "Wait",
+        "description": 1,
+        "operationOptions": 1,
+        "runtimeConfiguration": "bad",
+        "inputs": {
+          "interval": {
+            "count": 1,
+            "unit": "Minute"
+          },
+          "until": {
+            "timestamp": "2026-01-01T00:00:00Z"
+          }
+        },
+        "runAfter": {}
+      },
+      "Bad_Wait_Until": {
+        "type": "Wait",
+        "inputs": {
+          "until": {}
+        },
+        "runAfter": {
+          "Bad_Wait_Both": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Wait_Extra": {
+        "type": "Wait",
+        "inputs": {
+          "interval": {
+            "count": 1,
+            "unit": "Minute"
+          },
+          "extra": true
+        },
+        "runAfter": {
+          "Bad_Wait_Until": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Function_References": {
+        "type": "Function",
+        "inputs": {
+          "function": {
+            "id": 7
+          },
+          "functionApp": "not-object"
+        },
+        "runAfter": {
+          "Bad_Wait_Extra": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Artifact_Name": {
+        "type": "IntegrationAccountArtifactLookup",
+        "inputs": {
+          "artifactType": "Map",
+          "artifaceName": 7,
+          "artifactName": false
+        },
+        "runAfter": {
+          "Bad_Function_References": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

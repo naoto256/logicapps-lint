@@ -1,0 +1,11 @@
+{
+  "id": "template-parent-schema-invalid",
+  "title": "Package Schema",
+  "summary": "Package schema.",
+  "skus": ["premium"],
+  "workflows": {},
+  "featuredConnectors": [],
+  "details": {
+    "By": "Microsoft"
+  }
+}

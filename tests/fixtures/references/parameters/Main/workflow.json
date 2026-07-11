@@ -1,0 +1,39 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "KnownParameter": {
+        "type": "String",
+        "defaultValue": "ok"
+      }
+    },
+    "triggers": {
+      "manual": {
+        "kind": "Http",
+        "type": "Request",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    },
+    "actions": {
+      "UseKnownParameter": {
+        "type": "Compose",
+        "inputs": "@parameters('KnownParameter')",
+        "runAfter": {}
+      },
+      "UseMissingParameter": {
+        "type": "Compose",
+        "inputs": "@parameters('MissingParameter')",
+        "runAfter": {
+          "UseKnownParameter": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

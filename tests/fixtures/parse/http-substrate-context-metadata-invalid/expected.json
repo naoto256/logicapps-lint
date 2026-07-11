@@ -1,0 +1,62 @@
+[
+  {
+    "code": "wdl-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Action_Context_Substring/inputs/subscribe/body/inputs/unsubscribe/shadow"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Response_Headers/inputs/headers/x-bad"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Retry/inputs/retryPolicy/count"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Retry/inputs/retryPolicy/interval"
+  },
+  {
+    "code": "wdl-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Tracked_Dynamic/trackedProperties/bad"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Workflow/inputs/authentication"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Workflow/inputs/retryPolicy"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/description"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/outputs/O/description"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/parameters/varName/description"
+  }
+]

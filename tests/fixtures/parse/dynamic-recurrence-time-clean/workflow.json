@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "month": { "type": "String", "defaultValue": "" },
+    "tzSuffix": { "type": "String", "defaultValue": "" }
+  },
+  "triggers": {
+    "Timer": {
+      "type": "Recurrence",
+      "recurrence": {
+        "frequency": "Day",
+        "interval": 1,
+        "startTime": "2027-@{parameters('month')}-01T00:00:00Z",
+        "timeZone": "Pacific @{parameters('tzSuffix')}"
+      }
+    }
+  },
+  "actions": {},
+  "outputs": {}
+}

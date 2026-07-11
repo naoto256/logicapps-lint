@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "actions": {
+    "InitializeVars": {
+      "type": "InitializeVariable",
+      "inputs": {
+        "variables": [
+          {
+            "name": "Known",
+            "type": "String",
+            "value": "ok"
+          }
+        ]
+      },
+      "runAfter": {}
+    },
+    "UseKnown": {
+      "type": "Compose",
+      "inputs": "@variables('Known')",
+      "runAfter": {
+        "InitializeVars": [
+          "Succeeded"
+        ]
+      }
+    }
+  },
+  "parameters": {},
+  "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}}
+}

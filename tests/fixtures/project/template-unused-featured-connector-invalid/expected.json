@@ -1,0 +1,14 @@
+[
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/description"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/featuredConnectors/0"
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "auth": {
+        "type": "String",
+        "defaultValue": "auth"
+      }
+    },
+    "triggers": {
+      "Timer": {
+        "type": "Recurrence",
+        "recurrence": {
+          "frequency": "Day",
+          "interval": 1,
+          "schedule": {
+            "hours": 10,
+            "minutes": "30"
+          }
+        }
+      },
+      "BuiltIn": {
+        "type": "ServiceProvider",
+        "inputs": {
+          "serviceProviderConfiguration": {
+            "connectionName": "queue",
+            "operationId": "receive",
+            "serviceProviderId": "/serviceProviders/serviceBus"
+          }
+        }
+      }
+    },
+    "actions": {
+      "Http": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.invalid",
+          "authentication": "@parameters('auth')",
+          "retryPolicy": {
+            "type": "fixed",
+            "count": 90,
+            "interval": "PT1M"
+          }
+        },
+        "runAfter": {}
+      }
+    },
+    "outputs": {
+      "result": {
+        "type": "String",
+        "value": "@outputs('Http')"
+      }
+    }
+  },
+  "kind": "Stateful"
+}

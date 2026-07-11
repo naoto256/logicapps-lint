@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "validDef": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "triggers": { "manual": { "type": "Request", "kind": "Http", "inputs": { "schema": {} } } },
+      "actions": {}
+    },
+    "invalidDef": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "triggers": { "manual": { "type": "Request", "kind": "Http", "inputs": { "schema": {} } } },
+      "actions": { "Bad": { "type": "DefinitelyNotARealAction", "inputs": {} } }
+    }
+  },
+  "resources": [{
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2025-04-01",
+    "name": "[format('nested{0}', copyIndex('deploymentLoop'))]",
+    "copy": { "name": "deploymentLoop", "count": 2 },
+    "properties": {
+      "mode": "Incremental",
+      "expressionEvaluationOptions": { "scope": "inner" },
+      "parameters": {
+        "workflowDefinition": { "value": "[if(equals(copyIndex('deploymentLoop'), 0), variables('validDef'), variables('invalidDef'))]" }
+      },
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": { "workflowDefinition": { "type": "object" } },
+        "resources": [{
+          "type": "Microsoft.Logic/workflows", "apiVersion": "2019-05-01", "name": "nested", "location": "westus",
+          "properties": { "definition": "[parameters('workflowDefinition')]" }
+        }]
+      }
+    }
+  }]
+}

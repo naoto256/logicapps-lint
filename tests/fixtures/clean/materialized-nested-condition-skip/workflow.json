@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "childTemplateJson": {
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "resources": [
+        {
+          "type": "Microsoft.Logic/workflows",
+          "apiVersion": "2019-05-01",
+          "condition": "[not(true())]",
+          "name": "skipped",
+          "location": "eastus",
+          "properties": {
+            "definition": {
+              "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+              "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+              "actions": {
+                "Bad": {
+                  "type": "DefinitelyNotARealAction",
+                  "runAfter": {}
+                }
+              },
+              "outputs": {}
+            },
+            "parameters": {}
+          }
+        }
+      ]
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "parent",
+      "location": "eastus",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {},
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "nested",
+      "properties": {
+        "mode": "Incremental",
+        "template": "[variables('childTemplateJson')]"
+      }
+    }
+  ]
+}

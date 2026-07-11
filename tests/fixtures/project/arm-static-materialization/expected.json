@@ -1,0 +1,32 @@
+[
+  {
+    "code": "unknown-runafter-reference",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/MissingRunAfter/runAfter/Missing_Action"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/MissingOutput/inputs"
+  },
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Response/runAfter"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/1/properties/definition/actions/Use_Format/inputs"
+  },
+  {
+    "code": "project-missing-definition-parameter",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/1/properties/definition/actions/Use_Param/inputs"
+  }
+]

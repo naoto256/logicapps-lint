@@ -1,0 +1,30 @@
+[package]
+name = "logicapps-lint"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+license = "MIT OR Apache-2.0"
+description = "Local linter for Azure Logic Apps workflow definitions"
+readme = "README.md"
+documentation = "https://docs.rs/logicapps-lint"
+repository = "https://github.com/naoto256/logicapps-lint"
+homepage = "https://github.com/naoto256/logicapps-lint"
+keywords = ["azure", "logic-apps", "linter", "workflow"]
+categories = ["command-line-utilities", "development-tools"]
+
+[dependencies]
+annotate-snippets = "0.12.16"
+clap = { version = "4.5.41", features = ["derive"] }
+json-spanned-value = "0.2.2"
+serde = { version = "1.0.203", features = ["derive"] }
+serde_json = "1.0.117"
+thiserror = "2.0.12"
+walkdir = "2.5.0"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"

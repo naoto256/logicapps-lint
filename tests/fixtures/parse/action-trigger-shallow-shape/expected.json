@@ -1,0 +1,320 @@
+[
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_Request/kind"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_Recurrence/recurrence/frequency"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_Http_Trigger/inputs/uri"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_Http_Trigger/recurrence"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_HttpWebhook_Trigger/inputs/subscribe"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_ApiConnection_Trigger/inputs/host"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_ApiConnection_Trigger/inputs/method"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_ApiConnection_Trigger/inputs/path"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_ApiConnection_Trigger/recurrence"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_ApiConnection_Trigger_Body/recurrence"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_ApiConnection_Trigger_Body/inputs/host/connection"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_ApiConnectionWebhook_Trigger/inputs/host"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_ApiConnectionWebhook_Trigger/inputs/path"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_ApiConnectionWebhook_Trigger/inputs/body"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_ApiManagement_Trigger/inputs/api"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_ApiManagement_Trigger/inputs/pathTemplate"
+  },
+  {
+    "code": "workflow-shape-unknown-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_Trigger_Type/type"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_ApiConnection/inputs/host/connection"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_ApiConnection/inputs/path"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Http/inputs/uri"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_HttpWebhook/inputs/subscribe"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Join/inputs/from"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Join/inputs/joinWith"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Query/inputs/from"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Query/inputs/where"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Response/inputs/statusCode"
+  },
+  {
+    "code": "workflow-shape-unknown-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Action_Type/type"
+  },
+  {
+    "code": "workflow-shape-unknown-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Request_Action/type"
+  },
+  {
+    "code": "workflow-shape-unknown-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Recurrence_Action/type"
+  },
+  {
+    "code": "workflow-shape-unknown-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_SlidingWindow_Action/type"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Select/inputs/select"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Table/inputs/from"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Table/inputs/format"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Workflow/inputs/host"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Xslt/inputs/content"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_ApiManagement/inputs/api"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_ApiManagement/inputs/pathTemplate"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_SendToBatch/inputs/host"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_SendToBatch/inputs/batchName"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_SendToBatch/inputs/content"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Liquid/inputs/content"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Liquid/inputs/integrationAccount"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_FlatFileDecoding/inputs/content"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_FlatFileDecoding/inputs/integrationAccount"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Expression_AddToTime/inputs/baseTime"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Expression_AddToTime/inputs/interval"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Expression_AddToTime/inputs/timeUnit"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Expression_ConvertTimeZone/inputs/baseTime"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Expression_ConvertTimeZone/inputs/sourceTimeZone"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Expression_ConvertTimeZone/inputs/destinationTimeZone"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Expression_GetFutureTime/inputs/interval"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Expression_GetFutureTime/inputs/timeUnit"
+  }
+]

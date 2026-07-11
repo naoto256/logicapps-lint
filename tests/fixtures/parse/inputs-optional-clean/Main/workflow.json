@@ -1,0 +1,68 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "Http_Trigger": {
+        "type": "Http",
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 1
+        },
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.invalid"
+        }
+      },
+      "HttpWebhook_Trigger": {
+        "type": "HttpWebhook",
+        "inputs": {
+          "subscribe": {
+            "method": "POST",
+            "uri": "https://example.invalid/subscribe"
+          }
+        }
+      }
+    },
+    "actions": {
+      "Http_Action": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.invalid"
+        },
+        "runAfter": {}
+      },
+      "Join_Action": {
+        "type": "Join",
+        "inputs": {
+          "from": [
+            "a",
+            "b"
+          ],
+          "joinWith": ","
+        },
+        "runAfter": {
+          "Http_Action": [
+            "Succeeded"
+          ]
+        }
+      },
+      "ApiManagement_Action": {
+        "type": "ApiManagement",
+        "inputs": {
+          "api": {},
+          "pathTemplate": "/path"
+        },
+        "runAfter": {
+          "Join_Action": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}
