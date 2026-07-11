@@ -1,0 +1,14 @@
+/target
+
+# Local notes and environment files.
+_*.md
+_*.json
+.env
+.env.*
+
+# Secrets and local audit output.
+*.pem
+*.key
+*.p12
+*.crt
+.audit/
