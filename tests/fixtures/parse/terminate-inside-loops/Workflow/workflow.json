@@ -1,0 +1,45 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Loop": {
+        "type": "Foreach",
+        "foreach": [],
+        "actions": {
+          "Stop": {
+            "type": "Terminate",
+            "inputs": {
+              "runStatus": "Failed"
+            },
+            "runAfter": {}
+          }
+        },
+        "runAfter": {}
+      },
+      "Until_Loop": {
+        "type": "Until",
+        "expression": "@equals(iterationIndexes('Until_Loop'), 1)",
+        "limit": {
+          "count": 2
+        },
+        "actions": {
+          "Stop_Until": {
+            "type": "Terminate",
+            "inputs": {
+              "runStatus": "Failed"
+            },
+            "runAfter": {}
+          }
+        },
+        "runAfter": {
+          "Loop": [
+            "Succeeded"
+          ]
+        }
+      }
+    }
+  },
+  "kind": "Stateful"
+}

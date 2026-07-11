@@ -1,0 +1,96 @@
+{
+  "definition": {
+    "$schema": 42,
+    "contentVersion": {},
+    "parameters": {},
+    "triggers": {
+      "Timer": {
+        "type": "Recurrence",
+        "recurrence": {
+          "frequency": "Month",
+          "interval": 17,
+          "count": "ten",
+          "startTime": 5,
+          "schedule": {
+            "hours": [
+              24
+            ],
+            "minutes": [
+              "bad"
+            ]
+          }
+        }
+      },
+      "Bad_Http": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.invalid",
+          "authentication": {
+            "type": "Banana"
+          },
+          "retryPolicy": {
+            "type": "Banana",
+            "count": 999
+          }
+        }
+      },
+      "Bad_Batch": {
+        "type": "Batch",
+        "inputs": {
+          "batchGroupName": 7,
+          "releaseCriteria": {
+            "messageCount": "many",
+            "recurrence": {
+              "frequency": "Month",
+              "interval": 17
+            }
+          }
+        }
+      }
+    },
+    "actions": {
+      "Bad_Static": {
+        "type": "Compose",
+        "inputs": {},
+        "runtimeConfiguration": {
+          "concurrency": {
+            "maximumWaitingRuns": "many"
+          },
+          "staticResult": {
+            "name": "HTTP0",
+            "staticResultOptions": "Banana"
+          }
+        },
+        "runAfter": {}
+      },
+      "Bad_JavaScript": {
+        "type": "JavaScriptCode",
+        "inputs": {
+          "code": "return 1;",
+          "explicitDependencies": {
+            "actions": "A",
+            "includeTrigger": "yes"
+          }
+        },
+        "runAfter": {
+          "Bad_Static": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "staticResults": {
+      "HTTP0": {
+        "status": "Succeeded",
+        "outputs": "bad"
+      }
+    },
+    "outputs": {
+      "result": {
+        "type": "String"
+      }
+    }
+  },
+  "kind": "Stateful"
+}

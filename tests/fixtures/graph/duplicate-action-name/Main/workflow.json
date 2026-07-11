@@ -1,0 +1,61 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "manual": {
+        "kind": "Http",
+        "type": "Request",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    },
+    "actions": {
+      "Scope": {
+        "type": "Scope",
+        "actions": {
+          "Init": {
+            "type": "Compose",
+            "inputs": "nested",
+            "runAfter": {
+              "Definitely_Missing": [
+                "Succeeded"
+              ]
+            }
+          }
+        },
+        "runAfter": {}
+      },
+      "Init": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "tenant",
+              "type": "String",
+              "value": "example"
+            }
+          ]
+        },
+        "runAfter": {
+          "Scope": [
+            "Succeeded"
+          ]
+        }
+      },
+      "UseVariable": {
+        "type": "Compose",
+        "inputs": "@variables('tenant')",
+        "runAfter": {
+          "Init": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

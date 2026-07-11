@@ -1,0 +1,37 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "apiKey": {
+        "type": "String"
+      }
+    },
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Use_Api_Key": {
+        "type": "Compose",
+        "inputs": "@parameters('apiKey')",
+        "runAfter": {}
+      },
+      "Use_Connection": {
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "referenceName": "office365"
+            }
+          },
+          "method": "GET",
+          "path": "/me"
+        },
+        "runAfter": {
+          "Use_Api_Key": [
+            "Succeeded"
+          ]
+        }
+      }
+    }
+  },
+  "kind": "Stateful"
+}

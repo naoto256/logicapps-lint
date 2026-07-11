@@ -1,0 +1,14 @@
+[
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/runtimeConfiguration/concurrency/maximumWaitingRuns"
+  },
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/runtimeConfiguration/concurrency/maximumWaitingRuns"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "definition": {
+    "actions": {},
+    "parameters": {},
+    "triggers": []
+  },
+  "kind": "Stateful"
+}

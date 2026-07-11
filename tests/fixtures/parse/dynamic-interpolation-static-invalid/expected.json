@@ -1,0 +1,38 @@
+[
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/triggers/Timer/recurrence/frequency"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/triggers/Timer/recurrence/interval"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/triggers/Timer/recurrence/schedule/weekDays/0"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/actions/Call/inputs/uri"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/actions/Loop/limit/count"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/actions/Loop/limit/timeout"
+  }
+]

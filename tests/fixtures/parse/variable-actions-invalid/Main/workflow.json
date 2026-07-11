@@ -1,0 +1,132 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Init_Missing_Type": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "v"
+            }
+          ]
+        },
+        "runAfter": {}
+      },
+      "Init_Empty_Variables": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": []
+        },
+        "runAfter": {
+          "Init_Missing_Type": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Init_Bad_Type": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "bad",
+              "type": "NotAType"
+            }
+          ]
+        },
+        "runAfter": {
+          "Init_Empty_Variables": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Init_Counter": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "counter",
+              "type": "Integer"
+            }
+          ]
+        },
+        "runAfter": {
+          "Init_Bad_Type": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Set_Missing_Name": {
+        "type": "SetVariable",
+        "inputs": {
+          "value": "x"
+        },
+        "runAfter": {
+          "Init_Counter": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Set_Missing_Inputs": {
+        "type": "SetVariable",
+        "runAfter": {
+          "Set_Missing_Name": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Set_Unknown_Target": {
+        "type": "SetVariable",
+        "inputs": {
+          "name": "NeverInitialized",
+          "type": "NotAType",
+          "value": "x"
+        },
+        "runAfter": {
+          "Set_Missing_Inputs": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Increment_Default_Value": {
+        "type": "IncrementVariable",
+        "inputs": {
+          "name": "counter"
+        },
+        "runAfter": {
+          "Set_Unknown_Target": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Scope": {
+        "type": "Scope",
+        "actions": {
+          "Nested_Init": {
+            "type": "InitializeVariable",
+            "inputs": {
+              "variables": [
+                {
+                  "name": "inner",
+                  "type": "String",
+                  "value": "bad"
+                }
+              ]
+            },
+            "runAfter": {}
+          }
+        },
+        "runAfter": {
+          "Increment_Default_Value": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

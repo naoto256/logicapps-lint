@@ -1,0 +1,104 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "environmentName": {
+        "type": "String",
+        "defaultValue": "test"
+      }
+    },
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "alerts": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "severity": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "actions": {
+      "Compose_Request": {
+        "type": "Compose",
+        "inputs": {
+          "environment": "@parameters('environmentName')",
+          "alertCount": "@length(triggerBody()?['alerts'])"
+        },
+        "runAfter": {}
+      },
+      "For_each_alert": {
+        "type": "Foreach",
+        "foreach": "@triggerBody()?['alerts']",
+        "actions": {
+          "Compose_Alert": {
+            "type": "Compose",
+            "inputs": {
+              "id": "@items('For_each_alert')?['id']",
+              "summary": "Alert @{items('For_each_alert')?['id']} in @{parameters('environmentName')}"
+            },
+            "runAfter": {}
+          },
+          "Check_Severity": {
+            "type": "If",
+            "expression": "@equals(items('For_each_alert')?['severity'], 'High')",
+            "actions": {
+              "Compose_High": {
+                "type": "Compose",
+                "inputs": "@outputs('Compose_Alert')?['id']",
+                "runAfter": {}
+              }
+            },
+            "else": {
+              "actions": {
+                "Compose_Normal": {
+                  "type": "Compose",
+                  "inputs": "normal",
+                  "runAfter": {}
+                }
+              }
+            },
+            "runAfter": {
+              "Compose_Alert": [
+                "Succeeded"
+              ]
+            }
+          }
+        },
+        "runAfter": {
+          "Compose_Request": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Compose_Result": {
+        "type": "Compose",
+        "inputs": "@outputs('For_each_alert')",
+        "runAfter": {
+          "For_each_alert": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

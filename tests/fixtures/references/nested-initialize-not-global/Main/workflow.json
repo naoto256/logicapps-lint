@@ -1,0 +1,38 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "actions": {
+      "Scope": {
+        "type": "Scope",
+        "actions": {
+          "Initialize_local": {
+            "type": "InitializeVariable",
+            "inputs": {
+              "variables": [
+                {
+                  "name": "localOnly",
+                  "type": "String",
+                  "value": "x"
+                }
+              ]
+            },
+            "runAfter": {}
+          }
+        },
+        "runAfter": {}
+      },
+      "Use_Nested_Variable": {
+        "type": "Compose",
+        "inputs": "@variables('localOnly')",
+        "runAfter": {
+          "Scope": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}}
+  },
+  "kind": "Stateful"
+}

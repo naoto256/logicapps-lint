@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "option": { "type": "String", "defaultValue": "" }
+  },
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http",
+      "inputs": { "schema": {} }
+    }
+  },
+  "actions": {
+    "Call": {
+      "type": "Http",
+      "inputs": {
+        "method": "GET",
+        "uri": "https://example.invalid"
+      },
+      "operationOptions": "DefinitelyBad,@{parameters('option')}",
+      "runAfter": {}
+    }
+  },
+  "outputs": {}
+}

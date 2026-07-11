@@ -1,0 +1,22 @@
+{
+  "id": "template-parent-nested-schema-invalid",
+  "title": "Default Workflow",
+  "summary": "Default workflow.",
+  "skus": ["standard"],
+  "workflows": {
+    "default": { "name": "Default" }
+  },
+  "featuredConnectors": [
+    {
+      "id": "not-an-absolute-id",
+      "kind": "banana"
+    }
+  ],
+  "details": {
+    "By": "Microsoft",
+    "Type": "Workflow"
+  },
+  "artifacts": [
+    { "type": "workflow", "file": "no extension" }
+  ]
+}

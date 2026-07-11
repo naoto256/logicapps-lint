@@ -1,0 +1,8 @@
+[
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/actions/Use/inputs"
+  }
+]

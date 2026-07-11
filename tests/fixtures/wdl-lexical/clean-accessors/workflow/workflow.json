@@ -1,0 +1,29 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "actions": {
+      "Shape": {
+        "type": "Compose",
+        "inputs": {
+          "optional": "@triggerBody()?['payload']?['id']",
+          "direct": "@triggerBody()['payload']['id']",
+          "dot": "@triggerBody().payload.id"
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

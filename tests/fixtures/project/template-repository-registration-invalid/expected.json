@@ -1,0 +1,3 @@
+[
+  { "code": "template-manifest-missing-file", "severity": "error", "path": "manifest.json", "pointer": "/1" }
+]

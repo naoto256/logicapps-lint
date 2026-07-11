@@ -1,0 +1,20 @@
+[
+  {
+    "code": "template-manifest-name-missing-workflow-suffix",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/connections/servicebus"
+  },
+  {
+    "code": "template-manifest-name-missing-workflow-suffix",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/parameters/0/name"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "default/workflow.json",
+    "pointer": "/contentVersion"
+  }
+]

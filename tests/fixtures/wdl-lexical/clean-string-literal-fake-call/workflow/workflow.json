@@ -1,0 +1,33 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "actions": {
+      "Real": {
+        "type": "Compose",
+        "inputs": "ok",
+        "runAfter": {}
+      },
+      "UseReal": {
+        "type": "Compose",
+        "inputs": "@concat('outputs(''Fake'')', outputs('Real'))",
+        "runAfter": {
+          "Real": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "parameters": {},
+    "triggers": {
+      "Manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    }
+  },
+  "kind": "Stateful"
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/Shape/inputs/optional"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/Shape/inputs/direct"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/Shape/inputs/dot"
+  }
+]

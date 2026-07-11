@@ -1,0 +1,8 @@
+[
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Use/inputs"
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Until_Status": {
+        "type": "Until",
+        "expression": "@equals(action().status, 'Succeeded')",
+        "actions": {},
+        "limit": {
+          "count": 1
+        },
+        "runAfter": {}
+      },
+      "Tracked": {
+        "type": "Compose",
+        "inputs": "ok",
+        "trackedProperties": {
+          "status": "@action().outputs?.statusCode"
+        },
+        "runAfter": {
+          "Until_Status": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Webhook": {
+        "type": "HttpWebhook",
+        "inputs": {
+          "subscribe": {
+            "method": "POST",
+            "uri": "https://example.invalid/subscribe"
+          },
+          "unsubscribe": {
+            "method": "DELETE",
+            "uri": "@action().outputs?.body"
+          },
+          "callback": "@listCallbackUrl()"
+        },
+        "runAfter": {
+          "Tracked": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

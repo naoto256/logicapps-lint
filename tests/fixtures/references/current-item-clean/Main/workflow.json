@@ -1,0 +1,80 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "For_each": {
+        "type": "Foreach",
+        "foreach": "@createArray('a')",
+        "actions": {
+          "Use_Item": {
+            "type": "Compose",
+            "inputs": "@item()",
+            "runAfter": {}
+          }
+        },
+        "runAfter": {}
+      },
+      "Query_Items": {
+        "type": "Query",
+        "inputs": {
+          "from": [
+            {
+              "x": 1
+            }
+          ],
+          "where": "@equals(item()?['x'], 1)"
+        },
+        "runAfter": {
+          "For_each": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Select_Items": {
+        "type": "Select",
+        "inputs": {
+          "from": [
+            {
+              "x": 1
+            }
+          ],
+          "select": {
+            "x": "@item()?['x']"
+          }
+        },
+        "runAfter": {
+          "Query_Items": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Table_Items": {
+        "type": "Table",
+        "inputs": {
+          "from": [
+            {
+              "x": 1
+            }
+          ],
+          "format": "HTML",
+          "columns": [
+            {
+              "header": "x",
+              "value": "@item()?['x']"
+            }
+          ]
+        },
+        "runAfter": {
+          "Select_Items": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

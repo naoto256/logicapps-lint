@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "freq": { "type": "String", "defaultValue": "" },
+    "ival": { "type": "Int", "defaultValue": 1 },
+    "weekday": { "type": "String", "defaultValue": "" },
+    "hour": { "type": "Int", "defaultValue": 1 },
+    "minute": { "type": "Int", "defaultValue": 1 }
+  },
+  "triggers": {
+    "Timer": {
+      "type": "Recurrence",
+      "recurrence": {
+        "frequency": "@parameters('freq')",
+        "interval": "@parameters('ival')",
+        "schedule": {
+          "weekDays": "@parameters('weekday')",
+          "hours": ["@parameters('hour')"],
+          "minutes": ["@parameters('minute')"]
+        }
+      }
+    }
+  },
+  "actions": {},
+  "outputs": {}
+}

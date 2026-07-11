@@ -1,0 +1,25 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "When_webhook_arrives": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "shared_office365"
+            }
+          },
+          "path": "/MailSubscription/$subscriptions",
+          "body": {
+            "NotificationUrl": "@{listCallbackUrl()}"
+          },
+          "queries": "not-an-object"
+        }
+      }
+    },
+    "actions": {}
+  },
+  "kind": "Stateful"
+}

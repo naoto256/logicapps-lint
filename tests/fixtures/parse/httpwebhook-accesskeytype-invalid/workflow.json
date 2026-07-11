@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "triggers": {
+    "Hook": {
+      "type": "HttpWebhook",
+      "inputs": {
+        "subscribe": {
+          "method": "POST",
+          "uri": "https://example.com/subscribe"
+        },
+        "accessKeyType": "Tertiary"
+      }
+    }
+  },
+  "actions": {
+    "Hook_Action": {
+      "type": "HttpWebhook",
+      "inputs": {
+        "subscribe": {
+          "method": "POST",
+          "uri": "https://example.com/subscribe"
+        },
+        "accessKeyType": "Tertiary"
+      },
+      "runAfter": {}
+    }
+  }
+}

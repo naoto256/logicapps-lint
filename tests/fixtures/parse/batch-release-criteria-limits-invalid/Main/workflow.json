@@ -1,0 +1,23 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "Batch": {
+        "type": "Batch",
+        "inputs": {
+          "releaseCriteria": {
+            "messageCount": 8001,
+            "recurrence": {
+              "frequency": "Second",
+              "interval": 1
+            }
+          }
+        }
+      }
+    },
+    "actions": {},
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

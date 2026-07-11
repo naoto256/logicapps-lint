@@ -1,0 +1,58 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "When_request_received": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        },
+        "runtimeConfiguration": {
+          "concurrency": {
+            "maximumWaitingRuns": 101
+          }
+        }
+      },
+      "Batch": {
+        "type": "Batch",
+        "inputs": {
+          "configurations": {
+            "orders": {
+              "releaseCriteria": {
+                "messageCount": "not-an-integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "actions": {
+      "Loop": {
+        "type": "Foreach",
+        "foreach": "@triggerBody()",
+        "actions": {},
+        "runtimeConfiguration": {
+          "concurrency": {
+            "repetitions": 51
+          }
+        },
+        "runAfter": {}
+      },
+      "Response": {
+        "type": "Response",
+        "inputs": {
+          "statusCode": 302
+        },
+        "runAfter": {}
+      }
+    },
+    "staticResults": {
+      "HTTP0": {
+        "outputs": {}
+      }
+    }
+  },
+  "kind": "Stateful"
+}

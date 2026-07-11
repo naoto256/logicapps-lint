@@ -1,0 +1,26 @@
+{
+  "parameters": [
+    {
+      "name": "p_#workflowname#",
+      "displayName": "P",
+      "type": "String",
+      "description": "desc",
+      "required": true
+    }
+  ],
+  "connections": {},
+  "title": "Fixture template",
+  "description": "Fixture template.",
+  "artifacts": [
+    {
+      "type": "workflow",
+      "file": "workflow.json"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "id": "Main",
+  "summary": "Fixture template"
+}

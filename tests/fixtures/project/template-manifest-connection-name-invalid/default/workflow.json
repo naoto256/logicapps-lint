@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http",
+      "inputs": { "schema": {} }
+    }
+  },
+  "actions": {
+    "Call": {
+      "type": "ServiceProvider",
+      "inputs": {
+        "serviceProviderConfiguration": {
+          "connectionName": "bad name_#workflowname#",
+          "operationId": "sendMessage",
+          "serviceProviderId": "/serviceProviders/serviceBus"
+        }
+      },
+      "runAfter": {}
+    }
+  },
+  "outputs": {}
+}

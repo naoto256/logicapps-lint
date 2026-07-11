@@ -1,0 +1,56 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    },
+    "actions": {
+      "Init": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "Counter",
+              "type": "String",
+              "value": "0"
+            }
+          ]
+        },
+        "runAfter": {}
+      },
+      "Inc": {
+        "type": "IncrementVariable",
+        "inputs": {
+          "name": "Counter",
+          "value": 1
+        },
+        "runAfter": {
+          "Init": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Dec": {
+        "type": "DecrementVariable",
+        "inputs": {
+          "name": "Counter",
+          "value": 1
+        },
+        "runAfter": {
+          "Inc": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

@@ -1,0 +1,39 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "For_each": {
+        "type": "Foreach",
+        "foreach": [
+          1
+        ],
+        "actions": {
+          "Inner": {
+            "type": "Compose",
+            "inputs": "ok",
+            "runAfter": {}
+          }
+        },
+        "runAfter": {}
+      },
+      "Run_JS": {
+        "type": "JavaScriptCode",
+        "inputs": {
+          "code": "return 1;",
+          "explicitDependencies": {
+            "actions": [
+              "For_each"
+            ]
+          }
+        },
+        "runAfter": {
+          "For_each": [
+            "Succeeded"
+          ]
+        }
+      }
+    }
+  }
+}

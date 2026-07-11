@@ -1,0 +1,120 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Bad_JavaScript": {
+        "type": "JavaScriptCode",
+        "inputs": {},
+        "runAfter": {}
+      },
+      "Bad_Webhook": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "subscribe": {
+            "method": "POST",
+            "uri": "https://example.invalid/subscribe"
+          }
+        },
+        "runAfter": {
+          "Bad_JavaScript": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Webhook_Operation": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "subscribe": {
+            "method": "BREW"
+          },
+          "unsubscribe": {
+            "method": "DELETE"
+          }
+        },
+        "runAfter": {
+          "Bad_Webhook": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Webhook_Path_Method": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "host": {},
+          "path": "/hook"
+        },
+        "runAfter": {
+          "Bad_Webhook_Operation": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_HttpWebhook": {
+        "type": "HttpWebhook",
+        "inputs": {
+          "subscribe": {
+            "method": "BREW"
+          }
+        },
+        "runAfter": {
+          "Bad_Webhook_Path_Method": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Compose": {
+        "type": "Compose",
+        "runAfter": {
+          "Bad_HttpWebhook": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Powershell": {
+        "type": "PowershellCode",
+        "inputs": {},
+        "runAfter": {
+          "Bad_Compose": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_ParseJson": {
+        "type": "ParseJson",
+        "inputs": {},
+        "runAfter": {
+          "Bad_Powershell": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Terminate": {
+        "type": "Terminate",
+        "inputs": {},
+        "runAfter": {
+          "Bad_ParseJson": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Wait": {
+        "type": "Wait",
+        "inputs": {
+          "interval": {
+            "count": 1
+          }
+        },
+        "runAfter": {
+          "Bad_Terminate": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/$schema"
+  }
+]

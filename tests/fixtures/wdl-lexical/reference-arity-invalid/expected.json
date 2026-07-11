@@ -1,0 +1,44 @@
+[
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/Bad_Action_Arity/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/Bad_Empty_Outputs/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/Bad_Empty_FormData/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/Bad_Empty_Trigger_Helper/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/Bad_Action_Function_Arity/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/Bad_Malformed_Reference_Arguments/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/For_each/actions/Bad_Item_Arity/inputs"
+  }
+]

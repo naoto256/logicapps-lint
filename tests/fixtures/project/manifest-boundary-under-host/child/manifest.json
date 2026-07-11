@@ -1,0 +1,18 @@
+{
+  "parameters": [],
+  "connections": [],
+  "title": "Fixture template",
+  "description": "Fixture template.",
+  "artifacts": [
+    {
+      "type": "workflow",
+      "file": "workflow.json"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "id": "child",
+  "summary": "Fixture template"
+}

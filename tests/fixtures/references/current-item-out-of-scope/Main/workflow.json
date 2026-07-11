@@ -1,0 +1,49 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Use_Item": {
+        "type": "Compose",
+        "inputs": "@item()",
+        "runAfter": {}
+      },
+      "Bad_Query_From": {
+        "type": "Query",
+        "inputs": {
+          "from": "@item()",
+          "where": "@equals(1, 1)"
+        },
+        "runAfter": {
+          "Use_Item": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Until_loop": {
+        "type": "Until",
+        "expression": "@equals(1, 1)",
+        "limit": {
+          "count": 2,
+          "timeout": "PT1M"
+        },
+        "actions": {
+          "Bad_Until_Item": {
+            "type": "Compose",
+            "inputs": "@item()",
+            "runAfter": {}
+          }
+        },
+        "runAfter": {
+          "Bad_Query_From": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

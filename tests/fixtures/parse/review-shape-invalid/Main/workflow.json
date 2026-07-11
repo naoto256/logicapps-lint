@@ -1,0 +1,127 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "$connections": {
+        "type": "Object"
+      }
+    },
+    "triggers": {
+      "When_request_received": {
+        "type": "Request",
+        "kind": "Http",
+        "runtimeConfiguration": {
+          "concurrency": {
+            "runs": 101
+          }
+        },
+        "inputs": {
+          "schema": {}
+        }
+      },
+      "Poll": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.invalid"
+        }
+      },
+      "Window": {
+        "type": "SlidingWindow",
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 1
+        },
+        "inputs": {
+          "delay": 5
+        }
+      },
+      "Batch": {
+        "type": "Batch",
+        "inputs": {
+          "configurations": [
+            {
+              "releaseCriteria": {
+                "messageCount": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    "actions": {
+      "Select": {
+        "type": "Select",
+        "inputs": {
+          "from": [],
+          "select": []
+        },
+        "runAfter": {}
+      },
+      "Response": {
+        "type": "Response",
+        "inputs": {
+          "statusCode": 200,
+          "headers": []
+        },
+        "runAfter": {}
+      },
+      "Call_connector": {
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['office365']['connectionId']"
+            }
+          },
+          "method": "GET",
+          "path": "/Mail",
+          "retryPolicy": {
+            "type": "Linear",
+            "count": "three"
+          }
+        },
+        "runAfter": {}
+      },
+      "Sequential_Compose": {
+        "type": "Compose",
+        "operationOptions": "Sequential",
+        "inputs": "ok",
+        "runAfter": {}
+      },
+      "Repeated_Compose": {
+        "type": "Compose",
+        "runtimeConfiguration": {
+          "concurrency": {
+            "repetitions": 2
+          }
+        },
+        "inputs": "ok",
+        "runAfter": {}
+      },
+      "Until": {
+        "type": "Until",
+        "expression": "@equals(1, 2)",
+        "limit": {
+          "count": 5001
+        },
+        "actions": {},
+        "runAfter": {}
+      },
+      "Stop": {
+        "type": "Terminate",
+        "inputs": {
+          "runStatus": "Cancelled",
+          "runError": {
+            "code": "Cancelled",
+            "message": "Cancelled"
+          }
+        },
+        "runAfter": {}
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

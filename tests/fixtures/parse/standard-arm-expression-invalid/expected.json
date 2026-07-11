@@ -1,0 +1,20 @@
+[
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "DynamicActions/workflow.json",
+    "pointer": "/definition/actions"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "DynamicDefinition/workflow.json",
+    "pointer": "/definition"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "DynamicParameters/workflow.json",
+    "pointer": "/definition/parameters"
+  }
+]

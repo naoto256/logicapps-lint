@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "arm-static-specific-shape",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": "[json('{\"Manual\":{\"type\":\"Request\",\"kind\":\"Http\"},\"BadHttpTrigger\":{\"type\":\"Http\",\"recurrence\":{\"frequency\":\"Minute\",\"interval\":1},\"inputs\":{\"method\":\"GET\"}}}')]",
+          "actions": "[json('{\"BadHttp\":{\"type\":\"Http\",\"inputs\":{\"method\":\"GET\"},\"runAfter\":{}},\"BadResponse\":{\"type\":\"Response\",\"inputs\":{\"statusCode\":\"OK\"},\"runAfter\":{}}}')]",
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    }
+  ]
+}

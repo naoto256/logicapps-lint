@@ -1,0 +1,87 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "sample",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {
+            "Use_Static_Wdl": {
+              "type": "Compose",
+              "inputs": "[concat('@{outputs(''Missing_Action'')}', '')]",
+              "runAfter": {}
+            },
+            "Bad_Static_Arity": {
+              "type": "Compose",
+              "inputs": "[concat('@outputs()')]",
+              "runAfter": {
+                "Use_Static_Wdl": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Bad_Static_Inline_Interpolation": {
+              "type": "Compose",
+              "inputs": "[concat('prefix @{outputs()}')]",
+              "runAfter": {
+                "Bad_Static_Arity": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Bad_Static_Inline_Unbraced": {
+              "type": "Compose",
+              "inputs": "[concat('prefix @outputs()')]",
+              "runAfter": {
+                "Bad_Static_Inline_Interpolation": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Split_Static_Wdl": {
+              "type": "Compose",
+              "inputs": "[concat('@{outputs(''Missing', '_Action'')}')]",
+              "runAfter": {
+                "Bad_Static_Inline_Unbraced": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Discarded_Static_Wdl": {
+              "type": "Compose",
+              "inputs": "[replace('safe', '@{outputs(''Missing_Discarded'')}', 'safe')]",
+              "runAfter": {
+                "Split_Static_Wdl": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Escaped_Literal_Wdl": {
+              "type": "Compose",
+              "inputs": "[[literal @{outputs('Missing_Escaped')}]",
+              "runAfter": {
+                "Discarded_Static_Wdl": [
+                  "Succeeded"
+                ]
+              }
+            },
+            "Bracket_Literal_Wdl": {
+              "type": "Compose",
+              "inputs": "[test] @{outputs('Missing_Literal')}",
+              "runAfter": {
+                "Escaped_Literal_Wdl": [
+                  "Succeeded"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

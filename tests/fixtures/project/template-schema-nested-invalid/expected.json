@@ -1,0 +1,32 @@
+[
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/workflows/Bad_Name"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/artifacts/0/type"
+  },
+  {
+    "code": "template-manifest-invalid-type",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/parameters/0/allowedValues/0/value"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/parameters/0/allowedValues/0/displayName"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/parameters/0/allowedValues/1/value"
+  }
+]

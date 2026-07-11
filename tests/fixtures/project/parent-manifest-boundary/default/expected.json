@@ -1,0 +1,14 @@
+[
+  {
+    "code": "json-parse-error",
+    "severity": "error",
+    "path": "../manifest.json",
+    "pointer": ""
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/contentVersion"
+  }
+]

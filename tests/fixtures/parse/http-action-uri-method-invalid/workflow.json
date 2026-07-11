@@ -1,0 +1,49 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http",
+      "inputs": { "schema": {} }
+    }
+  },
+  "actions": {
+    "Bad_http_uri": {
+      "type": "Http",
+      "inputs": { "method": "GET", "uri": "ftp://example.com/file" },
+      "runAfter": {}
+    },
+    "Bad_http_method": {
+      "type": "Http",
+      "inputs": { "method": "TRACE", "uri": "https://example.com/" },
+      "runAfter": {}
+    },
+    "Bad_http_empty_host": {
+      "type": "Http",
+      "inputs": { "method": "GET", "uri": "https://" },
+      "runAfter": {}
+    },
+    "Bad_http_space_host": {
+      "type": "Http",
+      "inputs": { "method": "GET", "uri": "https://exa mple.com/path" },
+      "runAfter": {}
+    },
+    "Bad_http_alpha_port": {
+      "type": "Http",
+      "inputs": { "method": "GET", "uri": "https://example.com:abc/path" },
+      "runAfter": {}
+    },
+    "Bad_http_ip_literal": {
+      "type": "Http",
+      "inputs": { "method": "GET", "uri": "https://[not-an-ip]/path" },
+      "runAfter": {}
+    },
+    "Bad_http_space_path": {
+      "type": "Http",
+      "inputs": { "method": "GET", "uri": "https://example.com/a b" },
+      "runAfter": {}
+    }
+  },
+  "outputs": {}
+}

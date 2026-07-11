@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "child",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "workflowDefinition": {
+            "reference": {
+              "keyVault": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.KeyVault/vaults/vault"
+              },
+              "secretName": "workflowDefinition"
+            }
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "workflowDefinition": {
+              "type": "secureObject",
+              "defaultValue": {
+                "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+                "actions": {
+                  "BadFromDefault": {
+                    "type": "DefinitelyNotARealAction",
+                    "inputs": {},
+                    "runAfter": {}
+                  }
+                },
+                "outputs": {}
+              }
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Logic/workflows",
+              "apiVersion": "2019-05-01",
+              "name": "wf",
+              "location": "eastus",
+              "properties": {
+                "definition": "[parameters('workflowDefinition')]",
+                "parameters": {}
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

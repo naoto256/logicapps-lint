@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "actionType": {
+      "type": "string"
+    },
+    "triggerType": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "opaque-webhooks",
+      "location": "eastus",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+          "contentVersion": "1.0.0.0",
+          "triggers": {
+            "Hook": {
+              "type": "[parameters('triggerType')]",
+              "inputs": {
+                "subscribe": {
+                  "method": "POST",
+                  "uri": "https://example.invalid/subscribe",
+                  "body": {
+                    "callback": "@listCallbackUrl()"
+                  }
+                }
+              }
+            }
+          },
+          "actions": {
+            "Hook": {
+              "type": "[parameters('actionType')]",
+              "inputs": {
+                "subscribe": {
+                  "method": "POST",
+                  "uri": "https://example.invalid/subscribe",
+                  "body": {
+                    "callback": "@listCallbackUrl()"
+                  }
+                },
+                "unsubscribe": {
+                  "method": "POST",
+                  "uri": "https://example.invalid/unsubscribe",
+                  "body": "@action().outputs"
+                }
+              },
+              "runAfter": {}
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    }
+  ]
+}

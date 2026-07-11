@@ -1,0 +1,24 @@
+{
+  "id": "wrong-id",
+  "title": "Parent Title",
+  "summary": "See [bad] (https://example.com)",
+  "skus": ["standard"],
+  "workflows": {
+    "default": {
+      "name": "Default"
+    }
+  },
+  "featuredConnectors": [],
+  "details": {
+    "By": "Me",
+    "Type": "Workflow",
+    "Category": "InvalidCategory"
+  },
+  "artifacts": [
+    {
+      "type": "schema",
+      "file": "missing.xsd"
+    }
+  ],
+  "tags": ["one,two"]
+}

@@ -1,0 +1,32 @@
+{
+  "parameters": [
+    {
+      "name": "TemplateDeploymentName",
+      "displayName": "Template Deployment Name",
+      "type": "String",
+      "description": "Template deployment name.",
+      "default": "",
+      "required": true
+    }
+  ],
+  "connections": {
+    "servicebus": {
+      "connectorId": "/serviceProviders/serviceBus",
+      "kind": "inapp"
+    }
+  },
+  "title": "Fixture template",
+  "description": "Fixture template.",
+  "artifacts": [
+    {
+      "type": "workflow",
+      "file": "workflow.json"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "id": "default",
+  "summary": "Fixture template"
+}

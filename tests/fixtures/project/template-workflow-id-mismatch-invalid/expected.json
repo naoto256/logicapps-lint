@@ -1,0 +1,8 @@
+[
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/id"
+  }
+]

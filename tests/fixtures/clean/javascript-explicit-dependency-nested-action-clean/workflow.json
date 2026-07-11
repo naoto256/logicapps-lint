@@ -1,0 +1,48 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    },
+    "actions": {
+      "Group": {
+        "type": "Scope",
+        "actions": {
+          "Inner": {
+            "type": "Http",
+            "inputs": {
+              "method": "GET",
+              "uri": "https://example.invalid"
+            },
+            "runAfter": {}
+          }
+        },
+        "runAfter": {}
+      },
+      "Run_JS": {
+        "type": "JavaScriptCode",
+        "inputs": {
+          "code": "return workflowContext.actions.Inner.outputs.statusCode;",
+          "explicitDependencies": {
+            "actions": [
+              "Inner"
+            ]
+          }
+        },
+        "runAfter": {
+          "Group": [
+            "Succeeded"
+          ]
+        }
+      }
+    }
+  },
+  "kind": "Stateful"
+}

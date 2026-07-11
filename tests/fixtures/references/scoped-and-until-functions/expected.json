@@ -1,0 +1,14 @@
+[
+  {
+    "code": "unknown-scoped-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Use_Missing_Result/inputs"
+  },
+  {
+    "code": "unknown-until-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Until_loop/actions/Use_Missing_Index/inputs"
+  }
+]

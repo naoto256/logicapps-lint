@@ -1,0 +1,43 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "manual": {
+        "kind": "Http",
+        "type": "Request",
+        "inputs": {
+          "schema": {
+            "type": "array"
+          }
+        }
+      }
+    },
+    "actions": {
+      "For_each": {
+        "type": "Foreach",
+        "foreach": "@triggerBody()",
+        "actions": {
+          "UseCurrentItem": {
+            "type": "Compose",
+            "inputs": "@items('For_each')",
+            "runAfter": {}
+          }
+        },
+        "runAfter": {}
+      },
+      "UseMissingItemScope": {
+        "type": "Compose",
+        "inputs": "@items('MissingForeach')",
+        "runAfter": {
+          "For_each": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

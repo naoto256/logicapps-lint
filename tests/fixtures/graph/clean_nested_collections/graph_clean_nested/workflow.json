@@ -1,0 +1,112 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "actions": {
+      "Prepare": {
+        "type": "Compose",
+        "inputs": {
+          "message": "start"
+        },
+        "runAfter": {}
+      },
+      "Guard": {
+        "type": "If",
+        "expression": "@equals(outputs('Prepare').message, 'start')",
+        "actions": {
+          "When_true": {
+            "type": "Scope",
+            "actions": {
+              "Collect": {
+                "type": "Foreach",
+                "foreach": "@createArray('a', 'b')",
+                "actions": {
+                  "Collect_item": {
+                    "type": "Compose",
+                    "inputs": "@items('Collect')",
+                    "runAfter": {}
+                  }
+                },
+                "runAfter": {}
+              },
+              "Route": {
+                "type": "Switch",
+                "expression": "@outputs('Collect_item')",
+                "cases": {
+                  "Case_a": {
+                    "case": "a",
+                    "actions": {
+                      "Case_a_action": {
+                        "type": "Compose",
+                        "inputs": "a",
+                        "runAfter": {}
+                      }
+                    }
+                  },
+                  "Case_b": {
+                    "case": "b",
+                    "actions": {
+                      "Case_b_action": {
+                        "type": "Compose",
+                        "inputs": "b",
+                        "runAfter": {}
+                      }
+                    }
+                  }
+                },
+                "default": {
+                  "actions": {
+                    "Default_action": {
+                      "type": "Compose",
+                      "inputs": "default",
+                      "runAfter": {}
+                    }
+                  }
+                },
+                "runAfter": {
+                  "Collect": [
+                    "Succeeded"
+                  ]
+                }
+              }
+            },
+            "runAfter": {}
+          }
+        },
+        "else": {
+          "actions": {
+            "When_false": {
+              "type": "Compose",
+              "inputs": "skip",
+              "runAfter": {}
+            }
+          }
+        },
+        "runAfter": {
+          "Prepare": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Done": {
+        "type": "Compose",
+        "inputs": "@outputs('Guard')",
+        "runAfter": {
+          "Guard": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    }
+  },
+  "kind": "Stateful"
+}

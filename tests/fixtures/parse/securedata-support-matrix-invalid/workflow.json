@@ -1,0 +1,42 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": { "schema": {} }
+      }
+    },
+    "actions": {
+      "Init": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            { "name": "Count", "type": "Integer", "value": 0 }
+          ]
+        },
+        "runAfter": {}
+      },
+      "Inc": {
+        "type": "IncrementVariable",
+        "inputs": { "name": "Count", "value": 1 },
+        "runAfter": { "Init": ["Succeeded"] },
+        "runtimeConfiguration": {
+          "secureData": { "properties": ["inputs"] }
+        }
+      },
+      "Reply": {
+        "type": "Response",
+        "inputs": { "statusCode": 200, "body": "ok" },
+        "runAfter": { "Inc": ["Succeeded"] },
+        "runtimeConfiguration": {
+          "secureData": { "properties": ["outputs"] }
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

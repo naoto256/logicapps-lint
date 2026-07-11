@@ -1,0 +1,67 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "wf",
+      "location": "eastus",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+          "contentVersion": "1.0.0.0",
+          "triggers": {
+            "Timer": {
+              "type": "Recurrence",
+              "recurrence": {
+                "frequency": "Month",
+                "interval": 1,
+                "schedule": {
+                  "weekDays": null,
+                  "hours": "[json('null')]",
+                  "minutes": null,
+                  "monthDays": "[json('null')]",
+                  "monthlyOccurrences": null
+                }
+              }
+            },
+            "manual": {
+              "type": "Request",
+              "kind": "Http",
+              "inputs": { "schema": {} },
+              "conditions": [
+                {
+                  "expression": null,
+                  "dependsOn": "[json('null')]"
+                }
+              ]
+            },
+            "Poll": {
+              "type": "Http",
+              "recurrence": { "frequency": "Minute", "interval": 1 },
+              "inputs": {
+                "method": "GET",
+                "uri": "https://example.invalid",
+                "headers": null,
+                "queries": "[json('null')]",
+                "authentication": null
+              }
+            },
+            "Batch": {
+              "type": "Batch",
+              "inputs": {
+                "content": "ok",
+                "configurations": null,
+                "releaseCriteria": "[json('null')]"
+              }
+            }
+          },
+          "actions": {},
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "managedApiConnections": {
+    "office365": {
+      "api": {
+        "id": "/providers/Microsoft.Web/locations/westus/managedApis/office365"
+      }
+    }
+  }
+}

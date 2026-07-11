@@ -1,0 +1,11 @@
+{
+  "serviceProviderConnections": {
+    "office365": {
+      "serviceProvider": {
+        "id": "/serviceProviders/office365"
+      },
+      "displayName": "office365",
+      "parameterValues": {}
+    }
+  }
+}

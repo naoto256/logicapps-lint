@@ -1,0 +1,38 @@
+[
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/DoubleQuote/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/DoubleQuote/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/MismatchedDelimiters/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/MissingArgument/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/SingleConcat/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/UnclosedCall/inputs"
+  }
+]

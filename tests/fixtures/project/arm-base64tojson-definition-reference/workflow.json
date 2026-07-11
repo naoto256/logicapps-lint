@@ -1,0 +1,16 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2016-06-01",
+      "name": "audit",
+      "location": "westus",
+      "properties": {
+        "definition": "[base64ToJson('eyIkc2NoZW1hIjoiaHR0cHM6Ly9zY2hlbWEubWFuYWdlbWVudC5henVyZS5jb20vcHJvdmlkZXJzL01pY3Jvc29mdC5Mb2dpYy9zY2hlbWFzLzIwMTYtMDYtMDEvd29ya2Zsb3dkZWZpbml0aW9uLmpzb24jIiwiY29udGVudFZlcnNpb24iOiIxLjAuMC4wIiwidHJpZ2dlcnMiOnsibWFudWFsIjp7InR5cGUiOiJSZXF1ZXN0Iiwia2luZCI6Ikh0dHAiLCJpbnB1dHMiOnsic2NoZW1hIjp7fX19fSwiYWN0aW9ucyI6eyJVc2VNaXNzaW5nIjp7InR5cGUiOiJDb21wb3NlIiwiaW5wdXRzIjoiQG91dHB1dHMoJ01pc3NpbmcnKSIsInJ1bkFmdGVyIjp7fX19LCJvdXRwdXRzIjp7fX0=')]",
+        "parameters": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Bad_Success_RunError": {
+        "type": "Terminate",
+        "inputs": {
+          "runStatus": "Succeeded",
+          "runError": {
+            "code": "Done",
+            "message": "Should not exist"
+          }
+        },
+        "runAfter": {}
+      },
+      "Bad_RunError_Fields": {
+        "type": "Terminate",
+        "inputs": {
+          "runStatus": "Failed",
+          "runError": {
+            "code": 500,
+            "message": false
+          }
+        },
+        "runAfter": {
+          "Bad_Success_RunError": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_RunError_Object": {
+        "type": "Terminate",
+        "inputs": {
+          "runStatus": "Failed",
+          "runError": "bad"
+        },
+        "runAfter": {
+          "Bad_RunError_Fields": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

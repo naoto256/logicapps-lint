@@ -1,0 +1,7 @@
+{
+  "managedApiConnections": {
+    "office365": {
+      "authentication": "@parameters('tenantId')"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "Main/manifest.json",
+    "pointer": "/parameters"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "Main/manifest.json",
+    "pointer": "/connections"
+  },
+  {
+    "code": "template-workflow-invalid-wrapper",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition"
+  },
+  {
+    "code": "template-workflow-invalid-wrapper",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/kind"
+  }
+]

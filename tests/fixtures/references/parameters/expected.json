@@ -1,0 +1,8 @@
+[
+  {
+    "code": "project-missing-definition-parameter",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/UseMissingParameter/inputs"
+  }
+]

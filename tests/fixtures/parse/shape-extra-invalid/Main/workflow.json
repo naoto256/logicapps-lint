@@ -1,0 +1,71 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Bad_Limit": {
+        "type": "Compose",
+        "inputs": {},
+        "operationOptions": "Bogus",
+        "limit": {
+          "timeout": 7
+        },
+        "runAfter": {}
+      },
+      "Bad_Batch": {
+        "type": "Batch",
+        "inputs": {
+          "mode": "Inline",
+          "host": "bad",
+          "batchName": 7,
+          "content": null
+        },
+        "runAfter": {
+          "Bad_Limit": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Table": {
+        "type": "Table",
+        "inputs": {
+          "from": [],
+          "format": "CSV",
+          "columns": [
+            {
+              "value": "@item()"
+            },
+            {
+              "header": 7,
+              "value": "x"
+            },
+            {
+              "header": "ok"
+            }
+          ]
+        },
+        "runAfter": {
+          "Bad_Batch": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_JavaScript": {
+        "type": "JavaScriptCode",
+        "inputs": {
+          "code": "return 1;",
+          "explicitDependencies": []
+        },
+        "runAfter": {
+          "Bad_Table": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

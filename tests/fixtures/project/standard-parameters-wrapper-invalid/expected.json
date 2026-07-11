@@ -1,0 +1,14 @@
+[
+  {
+    "code": "project-missing-root-parameter",
+    "severity": "error",
+    "path": "parameters.json",
+    "pointer": "/NeedsValue"
+  },
+  {
+    "code": "project-parameter-invalid-shape",
+    "severity": "error",
+    "path": "parameters.json",
+    "pointer": "/parameters"
+  }
+]

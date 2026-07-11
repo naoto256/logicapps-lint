@@ -1,0 +1,8 @@
+[
+  {
+    "code": "action-reference-not-runafter",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/B/inputs"
+  }
+]

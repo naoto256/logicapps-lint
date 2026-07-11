@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workflowParameters": {
+      "type": "object"
+    }
+  },
+  "variables": {
+    "consumerRunAfter": {
+      "Producer": [
+        "Succeeded"
+      ]
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "wf",
+      "location": "eastus",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {
+            "Producer": {
+              "type": "Compose",
+              "inputs": "ok",
+              "runAfter": {}
+            },
+            "Consumer": {
+              "type": "Compose",
+              "inputs": "@outputs('Producer')",
+              "runAfter": "[variables('consumerRunAfter')]"
+            }
+          },
+          "parameters": "[parameters('workflowParameters')]",
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    }
+  ]
+}

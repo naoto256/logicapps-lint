@@ -1,0 +1,8 @@
+[
+  {
+    "code": "json-parse-error",
+    "severity": "error",
+    "path": "parameters.json",
+    "pointer": ""
+  }
+]

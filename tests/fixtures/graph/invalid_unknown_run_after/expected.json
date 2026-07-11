@@ -1,0 +1,8 @@
+[
+  {
+    "code": "unknown-runafter-reference",
+    "severity": "error",
+    "path": "graph_invalid_unknown_run_after/workflow.json",
+    "pointer": "/definition/actions/Send_email/runAfter/Missing_action"
+  }
+]

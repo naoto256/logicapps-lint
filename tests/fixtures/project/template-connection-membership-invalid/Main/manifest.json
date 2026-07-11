@@ -1,0 +1,23 @@
+{
+  "parameters": [],
+  "connections": {
+    "servicebus_#workflowname#": {
+      "connectorId": "/serviceProviders/serviceBus",
+      "kind": "inapp"
+    }
+  },
+  "title": "Fixture template",
+  "description": "Fixture template.",
+  "artifacts": [
+    {
+      "type": "workflow",
+      "file": "workflow.json"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "id": "Main",
+  "summary": "Fixture template"
+}

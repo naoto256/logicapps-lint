@@ -1,0 +1,39 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "Http_Trigger": {
+        "type": "Http"
+      },
+      "HttpWebhook_Trigger": {
+        "type": "HttpWebhook"
+      }
+    },
+    "actions": {
+      "Http_Action": {
+        "type": "Http",
+        "runAfter": {}
+      },
+      "Join_Action": {
+        "type": "Join",
+        "runAfter": {
+          "Http_Action": [
+            "Succeeded"
+          ]
+        }
+      },
+      "ApiManagement_Action": {
+        "type": "ApiManagement",
+        "runAfter": {
+          "Join_Action": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

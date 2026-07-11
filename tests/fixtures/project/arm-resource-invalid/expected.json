@@ -1,0 +1,50 @@
+[
+  {
+    "code": "arm-missing-workflow-parameter",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/1/properties/definition/parameters/message"
+  },
+  {
+    "code": "arm-missing-workflow-parameter",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/2/properties/definition/parameters/message"
+  },
+  {
+    "code": "arm-missing-workflow-parameter",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/3/properties/definition/parameters/secret"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/0/properties/definition"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/4/properties/parameters"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/6/properties/parameters"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/5/properties/definition/actions"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/5/properties/definition/triggers"
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "When_connector_polls": {
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "shared_office365"
+            }
+          },
+          "method": "GET",
+          "path": "/Mail/OnNewEmail",
+          "queries": "not-an-object"
+        },
+        "recurrence": {
+          "frequency": "Day",
+          "interval": 1
+        }
+      }
+    },
+    "actions": {}
+  },
+  "kind": "Stateful"
+}

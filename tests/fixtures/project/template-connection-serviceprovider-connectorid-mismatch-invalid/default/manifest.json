@@ -1,0 +1,23 @@
+{
+  "id": "default",
+  "title": "Fixture template",
+  "summary": "Fixture template.",
+  "description": "Fixture template.",
+  "artifacts": [
+    {
+      "type": "workflow",
+      "file": "workflow.json"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "parameters": [],
+  "connections": {
+    "servicebus_#workflowname#": {
+      "connectorId": "/providers/Microsoft.Web/locations/westus/managedApis/servicebus",
+      "kind": "inapp"
+    }
+  }
+}

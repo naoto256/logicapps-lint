@@ -1,0 +1,50 @@
+[
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Init_Missing_Type/inputs/variables/0/type"
+  },
+  {
+    "code": "workflow-shape-invalid-shape",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Init_Empty_Variables/inputs/variables"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Init_Bad_Type/inputs/variables/0/type"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Set_Missing_Name/inputs/name"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Set_Missing_Inputs/inputs"
+  },
+  {
+    "code": "unknown-variable-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Set_Unknown_Target/inputs/name"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Set_Unknown_Target/inputs/type"
+  },
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Scope/actions/Nested_Init"
+  }
+]

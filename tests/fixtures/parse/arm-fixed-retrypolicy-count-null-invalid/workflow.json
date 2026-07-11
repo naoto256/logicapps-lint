@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "wf",
+      "location": "eastus",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+          "contentVersion": "1.0.0.0",
+          "triggers": {
+            "Poll": {
+              "type": "Http",
+              "recurrence": {
+                "frequency": "Minute",
+                "interval": 1
+              },
+              "inputs": {
+                "method": "GET",
+                "uri": "https://example.invalid",
+                "retryPolicy": {
+                  "type": "Fixed",
+                  "count": null,
+                  "interval": "PT5S"
+                }
+              }
+            }
+          },
+          "actions": {},
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    }
+  ]
+}

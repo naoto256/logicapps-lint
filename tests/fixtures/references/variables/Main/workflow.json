@@ -1,0 +1,51 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "manual": {
+        "kind": "Http",
+        "type": "Request",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    },
+    "actions": {
+      "InitializeKnownVariable": {
+        "type": "InitializeVariable",
+        "inputs": {
+          "variables": [
+            {
+              "name": "KnownVariable",
+              "type": "String",
+              "value": "ok"
+            }
+          ]
+        },
+        "runAfter": {}
+      },
+      "UseKnownVariable": {
+        "type": "Compose",
+        "inputs": "@variables('KnownVariable')",
+        "runAfter": {
+          "InitializeKnownVariable": [
+            "Succeeded"
+          ]
+        }
+      },
+      "UseMissingVariable": {
+        "type": "Compose",
+        "inputs": "@variables('MissingVariable')",
+        "runAfter": {
+          "UseKnownVariable": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

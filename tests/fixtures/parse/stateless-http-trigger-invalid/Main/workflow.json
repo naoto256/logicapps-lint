@@ -1,0 +1,21 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "Poll": {
+        "type": "Http",
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 1
+        },
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.com"
+        }
+      }
+    },
+    "actions": {}
+  },
+  "kind": "Stateless"
+}

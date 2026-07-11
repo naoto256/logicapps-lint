@@ -1,0 +1,44 @@
+[
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Use_Static_Wdl/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Bad_Static_Arity/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Bad_Static_Inline_Interpolation/inputs"
+  },
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Bad_Static_Inline_Unbraced/inputs"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Split_Static_Wdl/inputs"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Escaped_Literal_Wdl/inputs"
+  },
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Bracket_Literal_Wdl/inputs"
+  }
+]

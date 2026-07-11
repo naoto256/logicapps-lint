@@ -1,0 +1,122 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "parameters": {
+    "workflowDefinition": {
+      "type": "object"
+    },
+    "workflowParameters": {
+      "type": "object"
+    },
+    "dynamicActions": {
+      "type": "object"
+    },
+    "dynamicTriggers": {
+      "type": "object"
+    },
+    "dynamicParameters": {
+      "type": "object"
+    },
+    "actionDef": {
+      "type": "object"
+    },
+    "triggerDef": {
+      "type": "object"
+    },
+    "parameterDef": {
+      "type": "object"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "dynamic-definition",
+      "properties": {
+        "definition": "[parameters('workflowDefinition')]",
+        "parameters": "[parameters('workflowParameters')]"
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "dynamic-sections",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "parameters": "[parameters('dynamicParameters')]",
+          "triggers": "[parameters('dynamicTriggers')]",
+          "actions": "[parameters('dynamicActions')]"
+        },
+        "parameters": "[parameters('workflowParameters')]"
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "dynamic-entries",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "parameters": {
+            "Need": "[parameters('parameterDef')]"
+          },
+          "triggers": {
+            "manual": "[parameters('triggerDef')]"
+          },
+          "actions": {
+            "Use": "[parameters('actionDef')]"
+          }
+        },
+        "parameters": {
+          "Need": {
+            "value": "present"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "dynamic-parameters-with-reference",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "parameters": "[parameters('workflowParameters')]",
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {
+            "Use_Runtime_Parameter": {
+              "type": "Compose",
+              "inputs": "@parameters('runtimeName')",
+              "runAfter": {}
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "dynamic-parameter-entry",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "parameters": {
+            "Need": "[parameters('parameterDef')]"
+          },
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {
+            "Use_Need": {
+              "type": "Compose",
+              "inputs": "@parameters('Need')",
+              "runAfter": {}
+            }
+          }
+        }
+      }
+    }
+  ]
+}

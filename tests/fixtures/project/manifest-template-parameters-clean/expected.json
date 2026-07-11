@@ -1,0 +1,14 @@
+[
+  {
+    "code": "project-missing-connection-parameter",
+    "severity": "error",
+    "path": "connections.json",
+    "pointer": "/managedApiConnections/office365/authentication"
+  },
+  {
+    "code": "project-missing-root-parameter",
+    "severity": "error",
+    "path": "Workflow/workflow.json",
+    "pointer": "/definition/parameters/tenantId"
+  }
+]

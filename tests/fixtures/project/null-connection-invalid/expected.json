@@ -1,0 +1,8 @@
+[
+  {
+    "code": "project-missing-connection-reference",
+    "severity": "error",
+    "path": "App/workflow.json",
+    "pointer": "/definition/actions/Call/inputs/host/connection/referenceName"
+  }
+]

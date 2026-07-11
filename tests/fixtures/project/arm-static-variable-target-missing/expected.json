@@ -1,0 +1,8 @@
+[
+  {
+    "code": "unknown-variable-reference",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Set_missing/inputs/name"
+  }
+]

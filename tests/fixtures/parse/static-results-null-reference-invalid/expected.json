@@ -1,0 +1,8 @@
+[
+  {
+    "code": "workflow-shape-invalid-reference",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/C/runtimeConfiguration/staticResult/name"
+  }
+]

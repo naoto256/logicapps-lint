@@ -1,0 +1,42 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http",
+      "inputs": {
+        "schema": {}
+      }
+    }
+  },
+  "actions": {
+    "Join": {
+      "type": "Join",
+      "inputs": {
+        "from": [
+          "a",
+          "b"
+        ],
+        "joinWith": "@@"
+      },
+      "runAfter": {}
+    },
+    "Table": {
+      "type": "Table",
+      "inputs": {
+        "format": "CSV",
+        "from": [
+          {
+            "name": "first"
+          }
+        ]
+      },
+      "runAfter": {
+        "Join": [
+          "Succeeded"
+        ]
+      }
+    }
+  }
+}

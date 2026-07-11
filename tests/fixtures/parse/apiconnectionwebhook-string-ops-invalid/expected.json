@@ -1,0 +1,14 @@
+[
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/actions/Hook/inputs/subscribe"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/actions/Hook/inputs/unsubscribe"
+  }
+]

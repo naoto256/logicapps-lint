@@ -1,0 +1,21 @@
+{
+  "skus": [
+    "consumption"
+  ],
+  "parameters": [],
+  "connections": {},
+  "title": "Fixture template",
+  "description": "Fixture template.",
+  "artifacts": [
+    {
+      "type": "workflow",
+      "file": "workflow.json"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "id": "template-outer-manifest-boundary",
+  "summary": "Fixture template"
+}

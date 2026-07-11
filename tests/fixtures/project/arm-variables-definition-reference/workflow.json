@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "workflowDefinition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+      "actions": {
+        "Use_Missing": {
+          "type": "Compose",
+          "inputs": "@outputs('Missing_Action')",
+          "runAfter": {}
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "wf",
+      "location": "eastus",
+      "properties": {
+        "definition": "[variables('workflowDefinition')]",
+        "parameters": {}
+      }
+    }
+  ]
+}

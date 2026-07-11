@@ -1,0 +1,8 @@
+{
+  "parameters": {
+    "NeedsValue": {
+      "type": "String",
+      "value": "wrapped"
+    }
+  }
+}

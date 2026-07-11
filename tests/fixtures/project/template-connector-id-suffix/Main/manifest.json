@@ -1,0 +1,23 @@
+{
+  "title": "Template",
+  "summary": "Template",
+  "kinds": [
+    "stateful"
+  ],
+  "artifacts": [
+    { "type": "workflow", "file": "workflow.json" }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "parameters": [],
+  "connections": [
+    {
+      "connectorId": "azureaisearch",
+      "kind": "shared"
+    }
+  ],
+  "description": "Fixture template.",
+  "id": "Main"
+}

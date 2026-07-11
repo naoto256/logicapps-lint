@@ -1,0 +1,26 @@
+[
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/artifacts/0/type"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/artifacts/0/file"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/featuredConnectors/0/id"
+  },
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/featuredConnectors/0/kind"
+  }
+]

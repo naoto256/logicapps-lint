@@ -1,0 +1,29 @@
+{
+  "id": "template-consumption-dollar-connection-missing",
+  "title": "Fixture template",
+  "summary": "Fixture template",
+  "skus": [
+    "consumption"
+  ],
+  "workflows": {
+    "default": {
+      "name": "Default"
+    }
+  },
+  "featuredConnectors": [],
+  "details": {
+    "By": "Microsoft",
+    "Type": "Workflow"
+  },
+  "description": "Fixture template.",
+  "artifacts": [
+    {
+      "type": "schema",
+      "file": "schema.xsd"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  }
+}

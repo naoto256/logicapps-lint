@@ -1,0 +1,6 @@
+{
+  "alertThreshold": {
+    "type": "Int",
+    "value": 5
+  }
+}

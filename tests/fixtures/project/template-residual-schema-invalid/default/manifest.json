@@ -1,0 +1,19 @@
+{
+  "id": "default",
+  "title": "Child Title",
+  "summary": "Child Summary",
+  "kinds": ["bogus"],
+  "prerequisites": "See [bad] (https://example.com)",
+  "artifacts": [
+    {
+      "type": "workflow",
+      "file": "../outside.json"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "parameters": [],
+  "connections": []
+}

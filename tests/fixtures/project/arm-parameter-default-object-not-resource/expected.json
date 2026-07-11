@@ -1,0 +1,8 @@
+[
+  {
+    "code": "workflow-definition-not-found",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": ""
+  }
+]

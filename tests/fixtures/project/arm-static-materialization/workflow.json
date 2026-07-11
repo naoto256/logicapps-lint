@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "static-actions",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": "[json('{\"When_request\":{\"type\":\"Request\",\"kind\":\"Http\",\"inputs\":{\"schema\":{}}}}')]",
+          "actions": "[json('{\"Producer\":{\"type\":\"Compose\",\"inputs\":\"ok\",\"runAfter\":{}},\"Consumer\":{\"type\":\"Compose\",\"inputs\":\"@{outputs(''Producer'')}\",\"runAfter\":{\"Producer\":[\"Succeeded\"]}},\"MissingRunAfter\":{\"type\":\"Compose\",\"inputs\":\"ok\",\"runAfter\":{\"Missing_Action\":[\"Succeeded\"]}},\"MissingOutput\":{\"type\":\"Compose\",\"inputs\":\"@{outputs(''Missing_Action'')}\",\"runAfter\":{}},\"Response\":{\"type\":\"Response\",\"inputs\":{\"statusCode\":200},\"runAfter\":{\"Consumer\":[\"Succeeded\"]}}}')]",
+          "outputs": {}
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "partial-format",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "parameters": "[json(format('{\"Known\":{\"type\":\"String\"},\"Dynamic\":\"{0}\"}', parameters('suffix')))]",
+          "actions": {
+            "Use_Format": {
+              "type": "Compose",
+              "inputs": "[format('@{outputs(''Missing_Format'')}/{0}', parameters('suffix'))]",
+              "runAfter": {}
+            },
+            "Use_Param": {
+              "type": "Compose",
+              "inputs": "@parameters('Missing')",
+              "runAfter": {}
+            }
+          },
+          "outputs": {}
+        }
+      }
+    }
+  ]
+}
