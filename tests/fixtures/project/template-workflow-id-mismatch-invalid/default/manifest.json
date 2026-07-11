@@ -1,0 +1,18 @@
+{
+  "id": "wrong-id",
+  "title": "Fixture template",
+  "summary": "Fixture template.",
+  "description": "Fixture template.",
+  "artifacts": [
+    {
+      "type": "workflow",
+      "file": "workflow.json"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "parameters": [],
+  "connections": {}
+}

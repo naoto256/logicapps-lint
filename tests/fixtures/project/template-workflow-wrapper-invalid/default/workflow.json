@@ -1,0 +1,29 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "queue-name_#workflowname#": {
+        "type": "String"
+      }
+    },
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Send": {
+        "type": "ServiceProvider",
+        "inputs": {
+          "parameters": {
+            "queueName": "@parameters('queue-name_#workflowname#')"
+          },
+          "serviceProviderConfiguration": {
+            "connectionName": "servicebus_#workflowname#",
+            "operationId": "sendMessage",
+            "serviceProviderId": "/serviceProviders/serviceBus"
+          }
+        },
+        "runAfter": {}
+      }
+    }
+  },
+  "kind": "Stateful"
+}

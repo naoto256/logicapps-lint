@@ -1,0 +1,13 @@
+{
+  "definition": {
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": { "schema": {} }
+      }
+    },
+    "actions": {}
+  },
+  "kind": "Stateful"
+}

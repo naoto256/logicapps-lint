@@ -1,0 +1,23 @@
+{
+  "title": "Consumption template",
+  "description": "x",
+  "skus": [
+    "consumption"
+  ],
+  "artifacts": [
+    { "type": "workflow", "file": "workflow.json" }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "parameters": [],
+  "connections": {
+    "office365_#workflowname#": {
+      "connectorId": "/office365_#workflowname#",
+      "kind": "shared"
+    }
+  },
+  "id": "Main",
+  "summary": "Consumption template"
+}

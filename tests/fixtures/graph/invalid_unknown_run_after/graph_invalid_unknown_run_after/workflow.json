@@ -1,0 +1,32 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "actions": {
+      "Start": {
+        "type": "Compose",
+        "inputs": "start",
+        "runAfter": {}
+      },
+      "Send_email": {
+        "type": "Compose",
+        "inputs": "@outputs('Start')",
+        "runAfter": {
+          "Missing_action": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    }
+  },
+  "kind": "Stateful"
+}

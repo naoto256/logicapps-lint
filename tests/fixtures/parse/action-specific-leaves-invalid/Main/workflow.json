@@ -1,0 +1,56 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Missing_Artifact": {
+        "type": "IntegrationAccountArtifactLookup",
+        "inputs": {},
+        "runAfter": {}
+      },
+      "Bad_SendToBatch": {
+        "type": "SendToBatch",
+        "inputs": {
+          "host": {
+            "workflow": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Logic/workflows/receiver"
+            },
+            "triggerName": "Batch_messages"
+          },
+          "batchName": "TestBatch",
+          "partitionName": 123,
+          "messageId": {
+            "not": "a string"
+          },
+          "content": "payload"
+        },
+        "runAfter": {
+          "Missing_Artifact": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_ApiManagement": {
+        "type": "ApiManagement",
+        "inputs": {
+          "api": {
+            "id": 123,
+            "name": {
+              "not": "a string"
+            }
+          },
+          "pathTemplate": "/orders",
+          "method": "GET"
+        },
+        "runAfter": {
+          "Bad_SendToBatch": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

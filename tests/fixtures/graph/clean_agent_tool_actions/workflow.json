@@ -1,0 +1,43 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "actions": {
+      "Review_Agent": {
+        "type": "Agent",
+        "inputs": {},
+        "runAfter": {},
+        "tools": {
+          "Summarize": {
+            "actions": {
+              "Summary": {
+                "type": "Compose",
+                "inputs": "ok",
+                "runAfter": {}
+              },
+              "Persist": {
+                "type": "Compose",
+                "inputs": "@outputs('Summary')",
+                "runAfter": {
+                  "Summary": [
+                    "Succeeded"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    }
+  },
+  "kind": "Stateful"
+}

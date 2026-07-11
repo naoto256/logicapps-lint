@@ -1,0 +1,44 @@
+[
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/actions/Loop/runtimeConfiguration/concurrency/repetitions"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/actions/Response/inputs/statusCode"
+  },
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/actions/Response/runAfter"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/staticResults/HTTP0/status"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/triggers"
+  },
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/triggers/When_request_received/runtimeConfiguration/concurrency/maximumWaitingRuns"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/triggers/Batch/inputs/configurations/orders/releaseCriteria/messageCount"
+  }
+]

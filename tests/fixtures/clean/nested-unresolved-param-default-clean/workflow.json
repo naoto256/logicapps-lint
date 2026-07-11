@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "outerDef": {
+      "type": "object"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "child",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "workflowDefinition": {
+            "value": "[parameters('outerDef')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "workflowDefinition": {
+              "type": "object",
+              "defaultValue": {
+                "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+                "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+                "actions": {
+                  "BadFromDefault": {
+                    "type": "NoSuchAction",
+                    "inputs": {},
+                    "runAfter": {}
+                  }
+                },
+                "outputs": {}
+              }
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Logic/workflows",
+              "apiVersion": "2019-05-01",
+              "name": "wf",
+              "location": "eastus",
+              "properties": {
+                "definition": "[parameters('workflowDefinition')]",
+                "parameters": {}
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

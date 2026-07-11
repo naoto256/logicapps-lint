@@ -1,0 +1,14 @@
+[
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/triggers/When_item/inputs/headers/x-ms-client"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/triggers/When_item/inputs/queries/api-version"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "actions": {
+    "For_each": {
+      "type": "Foreach",
+      "foreach": "@triggerBody()",
+      "actions": {
+        "UseItem": {
+          "type": "Compose",
+          "inputs": "@concat(items('For_Each'), items('For_Each'))"
+        }
+      },
+      "runAfter": {}
+    }
+  },
+  "parameters": {},
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http",
+      "inputs": {
+        "schema": {}
+      }
+    }
+  }
+}

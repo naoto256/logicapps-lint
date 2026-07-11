@@ -1,0 +1,41 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Empty_Function": {
+        "type": "Function",
+        "inputs": {},
+        "runAfter": {}
+      },
+      "Bad_Method": {
+        "type": "Function",
+        "inputs": {
+          "uri": "https://example.invalid/api/run",
+          "method": "BREW"
+        },
+        "runAfter": {
+          "Empty_Function": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Trace_Method": {
+        "type": "Function",
+        "inputs": {
+          "uri": "https://example.invalid/api/run",
+          "method": "TRACE"
+        },
+        "runAfter": {
+          "Bad_Method": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

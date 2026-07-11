@@ -1,0 +1,55 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "Bad_Http_Recurrence": {
+        "type": "Http",
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 0
+        },
+        "inputs": {
+          "method": "POST",
+          "uri": "https://example.invalid",
+          "headers": [],
+          "queries": [],
+          "authentication": true,
+          "retryPolicy": {
+            "count": "three"
+          }
+        }
+      },
+      "Bad_ApiManagement_Recurrence": {
+        "type": "ApiManagement",
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 0
+        },
+        "inputs": {
+          "api": {},
+          "pathTemplate": "/items"
+        }
+      }
+    },
+    "actions": {
+      "Bad_Http": {
+        "type": "Http",
+        "inputs": {
+          "method": "POST",
+          "uri": "https://example.invalid",
+          "headers": [],
+          "queries": [],
+          "authentication": true,
+          "retryPolicy": {
+            "count": "three"
+          }
+        },
+        "runAfter": {}
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

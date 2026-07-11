@@ -1,0 +1,26 @@
+{
+  "id": "template-multi-unused-featured-connector-invalid",
+  "title": "Fixture template",
+  "summary": "Fixture template.",
+  "skus": [
+    "standard"
+  ],
+  "workflows": {
+    "default": {
+      "name": "Default"
+    },
+    "second": {
+      "name": "Second"
+    }
+  },
+  "featuredConnectors": [
+    {
+      "id": "/connectionProviders/office365",
+      "kind": "shared"
+    }
+  ],
+  "details": {
+    "By": "Microsoft",
+    "Type": "Accelerator"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "template-registered-workflow-missing-invalid",
+  "title": "Fixture template",
+  "summary": "Fixture template.",
+  "skus": [
+    "standard"
+  ],
+  "workflows": {
+    "default": {
+      "name": "Default"
+    },
+    "missing": {
+      "name": "Missing"
+    }
+  },
+  "featuredConnectors": [],
+  "details": {
+    "By": "Microsoft",
+    "Type": "Accelerator"
+  }
+}

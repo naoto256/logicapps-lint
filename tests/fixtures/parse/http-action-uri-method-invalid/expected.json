@@ -1,0 +1,44 @@
+[
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/actions/Bad_http_method/inputs/method"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/actions/Bad_http_uri/inputs/uri"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/actions/Bad_http_empty_host/inputs/uri"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/actions/Bad_http_space_host/inputs/uri"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/actions/Bad_http_alpha_port/inputs/uri"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/actions/Bad_http_ip_literal/inputs/uri"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/actions/Bad_http_space_path/inputs/uri"
+  }
+]

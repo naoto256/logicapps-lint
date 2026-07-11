@@ -1,0 +1,144 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "malformed",
+      "properties": {
+        "definition": "not an object"
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "missing-parameter",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "parameters": {
+            "message": {
+              "type": "String"
+            }
+          },
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {
+            "Use_Message": {
+              "type": "Compose",
+              "inputs": "@parameters('message')",
+              "runAfter": {}
+            }
+          },
+          "outputs": {}
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "empty-parameter",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "parameters": {
+            "message": {
+              "type": "String"
+            }
+          },
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {
+            "Use_Message": {
+              "type": "Compose",
+              "inputs": "@parameters('message')",
+              "runAfter": {}
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": {
+          "message": {}
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "reference-parameter",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "parameters": {
+            "secret": {
+              "type": "SecureString"
+            }
+          },
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {
+            "Use_Secret": {
+              "type": "Compose",
+              "inputs": "@parameters('secret')",
+              "runAfter": {}
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": {
+          "secret": {
+            "reference": {
+              "keyVault": {
+                "id": "[parameters('vaultId')]"
+              },
+              "secretName": "secret"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "invalid-parameters-shape",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "parameters": {
+            "message": {
+              "type": "String"
+            }
+          },
+          "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+          "actions": {
+            "Use_Message": {
+              "type": "Compose",
+              "inputs": "@parameters('message')",
+              "runAfter": {}
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": "not an object"
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "empty-definition",
+      "properties": {
+        "definition": {}
+      }
+    },
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "dynamic-definition-bad-parameters",
+      "properties": {
+        "definition": "[parameters('workflowDefinition')]",
+        "parameters": "not an object"
+      }
+    }
+  ]
+}

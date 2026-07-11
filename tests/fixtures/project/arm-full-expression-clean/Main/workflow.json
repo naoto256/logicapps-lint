@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "parameters": {
+    "every": {
+      "type": "int"
+    },
+    "frequency": {
+      "type": "string"
+    },
+    "host": {
+      "type": "object"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "dynamic",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {
+            "Every": {
+              "type": "Recurrence",
+              "recurrence": {
+                "frequency": "[parameters('frequency')]",
+                "interval": "[parameters('every')]"
+              }
+            }
+          },
+          "actions": {
+            "Call_Child": {
+              "type": "Workflow",
+              "inputs": {
+                "host": "[parameters('host')]"
+              },
+              "runAfter": {}
+            }
+          },
+          "outputs": {}
+        }
+      }
+    }
+  ]
+}

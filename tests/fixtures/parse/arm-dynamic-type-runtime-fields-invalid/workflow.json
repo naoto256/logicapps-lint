@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "triggerType": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "wf",
+      "location": "westus",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+          "contentVersion": "1.0.0.0",
+          "triggers": {
+            "Dynamic": {
+              "type": "[parameters('triggerType')]",
+              "runtimeConfiguration": {
+                "concurrency": {
+                  "runs": "bad",
+                  "repetitions": 2,
+                  "maximumWaitingRuns": "bad"
+                },
+                "paginationPolicy": {
+                  "minimumItemCount": 5
+                },
+                "contentTransfer": {
+                  "transferMode": "Chunked"
+                },
+                "secureData": {
+                  "properties": "inputs"
+                },
+                "staticResult": {
+                  "name": "ManualStatic",
+                  "staticResultOptions": "Enabled"
+                }
+              }
+            }
+          },
+          "actions": {},
+          "outputs": {}
+        }
+      }
+    }
+  ]
+}

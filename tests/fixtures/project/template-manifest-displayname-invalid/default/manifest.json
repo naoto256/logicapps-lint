@@ -1,0 +1,23 @@
+{
+  "id": "default",
+  "title": "Default Workflow",
+  "summary": "Default workflow.",
+  "description": "Default workflow.",
+  "artifacts": [
+    { "type": "workflow", "file": "workflow.json" }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "parameters": [
+    {
+      "name": "path_#workflowname#",
+      "displayName": "path",
+      "type": "String",
+      "description": "Path.",
+      "required": true
+    }
+  ],
+  "connections": {}
+}

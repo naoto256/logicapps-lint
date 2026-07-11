@@ -1,0 +1,15 @@
+{
+  "id": "template-parent-type-mismatch-invalid",
+  "title": "Package Type",
+  "summary": "Package type mismatch.",
+  "skus": ["standard"],
+  "workflows": {
+    "default": { "name": "Default" },
+    "second": { "name": "Second" }
+  },
+  "featuredConnectors": [],
+  "details": {
+    "By": "Microsoft",
+    "Type": "Workflow"
+  }
+}

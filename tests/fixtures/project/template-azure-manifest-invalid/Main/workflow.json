@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+  "actions": {
+    "Use_Connection": {
+      "type": "Compose",
+      "inputs": "@parameters('$connections')['azureaisearch_#workflowname#']['connectionId']",
+      "runAfter": {}
+    }
+  },
+  "parameters": {
+    "$connections": {
+      "type": "Object"
+    }
+  },
+  "outputs": {}
+}

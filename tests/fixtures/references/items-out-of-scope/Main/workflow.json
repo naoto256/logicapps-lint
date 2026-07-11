@@ -1,0 +1,31 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "actions": {
+      "For_each": {
+        "type": "Foreach",
+        "foreach": "@triggerBody()",
+        "actions": {
+          "Use_Item_Inside_Loop": {
+            "type": "Compose",
+            "inputs": "@items('For_each')",
+            "runAfter": {}
+          }
+        },
+        "runAfter": {}
+      },
+      "Use_Item_Outside_Loop": {
+        "type": "Compose",
+        "inputs": "@items('For_each')",
+        "runAfter": {
+          "For_each": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}}
+  },
+  "kind": "Stateful"
+}

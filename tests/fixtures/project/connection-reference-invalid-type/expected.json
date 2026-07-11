@@ -1,0 +1,14 @@
+[
+  {
+    "code": "project-connection-reference-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/List_rows/inputs/host/connection/referenceName"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/List_rows/inputs/host/connection/referenceName"
+  }
+]

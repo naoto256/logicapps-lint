@@ -1,0 +1,11 @@
+{
+  "id": "template-parent-required-fields-invalid",
+  "title": "Fixture Package",
+  "summary": "Fixture package.",
+  "images": {
+    "light": "package-light",
+    "dark": "package-dark"
+  },
+  "parameters": [],
+  "connections": {}
+}

@@ -1,0 +1,55 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "targetAction": {
+        "type": "String",
+        "defaultValue": "Other"
+      }
+    },
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Other": {
+        "type": "Compose",
+        "inputs": "other",
+        "runAfter": {}
+      },
+      "Tracked": {
+        "type": "Compose",
+        "inputs": "tracked",
+        "trackedProperties": {
+          "otherBody": "@body(parameters('targetAction'))"
+        },
+        "runAfter": {
+          "Other": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Hook": {
+        "type": "HttpWebhook",
+        "inputs": {
+          "subscribe": {
+            "method": "POST",
+            "uri": "https://example.invalid/subscribe",
+            "body": "@listCallbackUrl()"
+          },
+          "unsubscribe": {
+            "uri": "https://example.invalid/unsubscribe"
+          }
+        },
+        "trackedProperties": {
+          "callback": "@listCallbackUrl()"
+        },
+        "runAfter": {
+          "Tracked": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

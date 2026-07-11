@@ -1,0 +1,22 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "Api": {
+        "type": "ApiManagement",
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 1
+        },
+        "inputs": {
+          "api": {},
+          "pathTemplate": "/items"
+        }
+      }
+    },
+    "actions": {},
+    "outputs": {}
+  },
+  "kind": "Stateless"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "default",
+  "title": "Default Workflow",
+  "summary": "Default workflow.",
+  "description": "Default workflow.",
+  "artifacts": [
+    { "type": "workflow", "file": "missing-workflow.json" },
+    { "type": "map", "file": "map" }
+  ],
+  "images": {
+    "preview": "workflow-light",
+    "light": "Workflow-Light",
+    "dark": "workflow1"
+  },
+  "parameters": [],
+  "connections": {}
+}

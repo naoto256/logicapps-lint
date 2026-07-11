@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http",
+      "inputs": {
+        "schema": {}
+      }
+    }
+  },
+  "actions": {
+    "Route": {
+      "type": "Switch",
+      "expression": "@triggerBody()?['route']",
+      "cases": {
+        "C01": { "case": 1, "actions": {} },
+        "C02": { "case": 2, "actions": {} },
+        "C03": { "case": 3, "actions": {} },
+        "C04": { "case": 4, "actions": {} },
+        "C05": { "case": 5, "actions": {} },
+        "C06": { "case": 6, "actions": {} },
+        "C07": { "case": 7, "actions": {} },
+        "C08": { "case": 8, "actions": {} },
+        "C09": { "case": 9, "actions": {} },
+        "C10": { "case": 10, "actions": {} },
+        "C11": { "case": 11, "actions": {} },
+        "C12": { "case": 12, "actions": {} },
+        "C13": { "case": 13, "actions": {} },
+        "C14": { "case": 14, "actions": {} },
+        "C15": { "case": 15, "actions": {} },
+        "C16": { "case": 16, "actions": {} },
+        "C17": { "case": 17, "actions": {} },
+        "C18": { "case": 18, "actions": {} },
+        "C19": { "case": 19, "actions": {} },
+        "C20": { "case": 20, "actions": {} },
+        "C21": { "case": 21, "actions": {} },
+        "C22": { "case": 22, "actions": {} },
+        "C23": { "case": 23, "actions": {} },
+        "C24": { "case": 24, "actions": {} },
+        "C25": { "case": 25, "actions": {} },
+        "C26": { "case": 26, "actions": {} }
+      },
+      "runAfter": {}
+    }
+  }
+}

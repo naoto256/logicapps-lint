@@ -1,0 +1,14 @@
+[
+  {
+    "code": "unknown-variable-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Use_Nested_Variable/inputs"
+  },
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Scope/actions/Initialize_local"
+  }
+]

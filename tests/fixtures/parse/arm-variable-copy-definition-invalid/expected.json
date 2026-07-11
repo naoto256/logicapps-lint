@@ -1,0 +1,8 @@
+[
+  {
+    "code": "workflow-shape-unknown-type",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Invalid/type"
+  }
+]

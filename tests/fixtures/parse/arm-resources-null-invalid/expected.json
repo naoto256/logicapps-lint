@@ -1,0 +1,8 @@
+[
+  {
+    "code": "arm-template-invalid-shape",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources"
+  }
+]

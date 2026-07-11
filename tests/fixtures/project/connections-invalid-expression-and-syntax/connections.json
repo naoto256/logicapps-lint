@@ -1,0 +1,12 @@
+{
+  "managedApiConnections": {
+    "blob": {
+      "authentication": "@concat(parameters('blobAuth'), appsetting('OTHER_SETTING'))",
+      "badQuotedParameter": "@parameters(\"blobAuth\")",
+      "badArity": "@parameters('blobAuth', 'extra')",
+      "badArm": "[parameters('bad')]",
+      "badPlainTextExpression": "/subscriptions/@appsetting('WORKFLOWS_SUBSCRIPTION_ID')/resourceGroups/example",
+      "unclosedExpression": "@concat('open'"
+    }
+  }
+}

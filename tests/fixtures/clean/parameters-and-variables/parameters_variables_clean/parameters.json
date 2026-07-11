@@ -1,0 +1,13 @@
+{
+  "tenantCode": {
+    "type": "String",
+    "value": "soc"
+  },
+  "defaultTags": {
+    "type": "Array",
+    "value": [
+      "logicapps",
+      "test"
+    ]
+  }
+}

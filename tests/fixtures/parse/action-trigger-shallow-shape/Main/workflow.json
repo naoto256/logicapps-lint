@@ -1,0 +1,248 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "Bad_Request": {
+        "type": "Request",
+        "kind": "Bogus"
+      },
+      "Bad_Recurrence": {
+        "type": "Recurrence",
+        "recurrence": {
+          "frequency": "Bogus",
+          "interval": 1
+        }
+      },
+      "Bad_Http_Trigger": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET"
+        }
+      },
+      "Bad_HttpWebhook_Trigger": {
+        "type": "HttpWebhook",
+        "inputs": {}
+      },
+      "Bad_ApiConnection_Trigger": {
+        "type": "ApiConnection",
+        "inputs": {}
+      },
+      "Bad_ApiConnection_Trigger_Body": {
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {},
+          "method": "POST",
+          "path": "/trigger"
+        }
+      },
+      "Bad_ApiConnectionWebhook_Trigger": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {}
+      },
+      "Bad_ApiManagement_Trigger": {
+        "type": "ApiManagement",
+        "inputs": {}
+      },
+      "Bad_Trigger_Type": {
+        "type": "TotallyNotATrigger"
+      }
+    },
+    "actions": {
+      "Bad_Http": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET"
+        },
+        "runAfter": {}
+      },
+      "Bad_ApiConnection": {
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {}
+        },
+        "runAfter": {
+          "Bad_Http": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Response": {
+        "type": "Response",
+        "inputs": {},
+        "runAfter": {
+          "Bad_ApiConnection": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Join": {
+        "type": "Join",
+        "inputs": {},
+        "runAfter": {
+          "Bad_Response": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Query": {
+        "type": "Query",
+        "inputs": {},
+        "runAfter": {
+          "Bad_Join": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Select": {
+        "type": "Select",
+        "inputs": {
+          "from": []
+        },
+        "runAfter": {
+          "Bad_Query": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Table": {
+        "type": "Table",
+        "inputs": {},
+        "runAfter": {
+          "Bad_Select": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Workflow": {
+        "type": "Workflow",
+        "inputs": {},
+        "runAfter": {
+          "Bad_Table": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Xslt": {
+        "type": "Xslt",
+        "inputs": {},
+        "runAfter": {
+          "Bad_Workflow": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_HttpWebhook": {
+        "type": "HttpWebhook",
+        "inputs": {},
+        "runAfter": {
+          "Bad_Xslt": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_ApiManagement": {
+        "type": "ApiManagement",
+        "inputs": {},
+        "runAfter": {
+          "Bad_HttpWebhook": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_SendToBatch": {
+        "type": "SendToBatch",
+        "inputs": {},
+        "runAfter": {
+          "Bad_ApiManagement": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Liquid": {
+        "type": "Liquid",
+        "kind": "JsonToJson",
+        "inputs": {},
+        "runAfter": {
+          "Bad_SendToBatch": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_FlatFileDecoding": {
+        "type": "FlatFileDecoding",
+        "inputs": {},
+        "runAfter": {
+          "Bad_Liquid": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Expression_AddToTime": {
+        "type": "Expression",
+        "kind": "AddToTime",
+        "inputs": {},
+        "runAfter": {
+          "Bad_FlatFileDecoding": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Expression_ConvertTimeZone": {
+        "type": "Expression",
+        "kind": "ConvertTimeZone",
+        "inputs": {},
+        "runAfter": {
+          "Bad_Expression_AddToTime": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Expression_GetFutureTime": {
+        "type": "Expression",
+        "kind": "GetFutureTime",
+        "inputs": {},
+        "runAfter": {
+          "Bad_Expression_ConvertTimeZone": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Action_Type": {
+        "type": "TotallyNotAnAction",
+        "runAfter": {
+          "Bad_Expression_GetFutureTime": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Request_Action": {
+        "type": "Request",
+        "runAfter": {
+          "Bad_Action_Type": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_Recurrence_Action": {
+        "type": "Recurrence",
+        "runAfter": {
+          "Bad_Request_Action": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Bad_SlidingWindow_Action": {
+        "type": "SlidingWindow",
+        "runAfter": {
+          "Bad_Recurrence_Action": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - "release/*"
+  pull_request:
+    branches:
+      - main
+      - "release/*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain:
+          - "1.88.0"
+          - stable
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # pin-audit:2026-06-03 de0fac2 | v6.0.2
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@29eef336d9b2848a0b548edc03f92a220660cdb8 # pin-audit:2026-05-20 29eef33 | stable-branch
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@e18b497796c12c097a38f9edb9d0641fb99eee32 # pin-audit:2026-05-21 e18b497 | v2
+        with:
+          key: ${{ matrix.toolchain }}
+      - run: cargo fmt -- --check
+      - run: cargo test --locked
+      - run: cargo clippy --locked --all-targets --all-features -- -D warnings
+      - run: RUSTDOCFLAGS="-D warnings" cargo doc --locked --no-deps
+      - run: cargo package --locked
+      - if: matrix.toolchain == 'stable'
+        run: cargo install cargo-audit --version 0.21.2 --locked
+      - if: matrix.toolchain == 'stable'
+        run: cargo install cargo-deny --version 0.19.5 --locked
+      # Advisory-db parse errors upstream (rustsec/advisory-db) occasionally
+      # block cargo-audit before it can read its --ignore config. cargo-deny
+      # below performs an equivalent advisory scan and remains strict, so a
+      # transient audit fault must not block the whole matrix.
+      - if: matrix.toolchain == 'stable'
+        continue-on-error: true
+        run: cargo audit
+      - if: matrix.toolchain == 'stable'
+        run: cargo deny check advisories bans sources licenses

@@ -1,0 +1,10 @@
+{
+  "BadType": {
+    "type": "definitely-not-a-logic-app-type",
+    "value": "x"
+  },
+  "Secret": {
+    "type": "String",
+    "value": "plain"
+  }
+}

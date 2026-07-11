@@ -1,0 +1,20 @@
+[
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "shape_non_object_triggers/workflow.json",
+    "pointer": "/definition/triggers"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "shape_non_object_triggers/workflow.json",
+    "pointer": "/definition/$schema"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "shape_non_object_triggers/workflow.json",
+    "pointer": "/definition/contentVersion"
+  }
+]

@@ -1,0 +1,146 @@
+[
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Static/runtimeConfiguration/concurrency/maximumWaitingRuns"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/$schema"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_JavaScript/inputs/explicitDependencies/actions"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_JavaScript/inputs/explicitDependencies/includeTrigger"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Static/runtimeConfiguration/concurrency/maximumWaitingRuns"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Bad_Static/runtimeConfiguration/staticResult/staticResultOptions"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/contentVersion"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/outputs/result/value"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/staticResults/HTTP0/outputs"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_Batch/inputs/batchGroupName"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_Batch/inputs/releaseCriteria/messageCount"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_Batch/inputs/releaseCriteria/recurrence/interval"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_Http/inputs/authentication/type"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_Http/inputs/retryPolicy/count"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_Http/inputs/retryPolicy/type"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Bad_Http/recurrence"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/count"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/interval"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/startTime"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/hours/0"
+  },
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/hours"
+  },
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/minutes"
+  },
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/minutes/0"
+  }
+]

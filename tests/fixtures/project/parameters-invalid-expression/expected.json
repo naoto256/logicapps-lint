@@ -1,0 +1,26 @@
+[
+  {
+    "code": "project-parameter-invalid-expression",
+    "severity": "error",
+    "path": "parameters.json",
+    "pointer": "/badArm/value"
+  },
+  {
+    "code": "project-parameter-invalid-expression",
+    "severity": "error",
+    "path": "parameters.json",
+    "pointer": "/badBare/value"
+  },
+  {
+    "code": "project-parameter-invalid-expression",
+    "severity": "error",
+    "path": "parameters.json",
+    "pointer": "/badConcat/value"
+  },
+  {
+    "code": "project-parameter-invalid-expression",
+    "severity": "error",
+    "path": "parameters.json",
+    "pointer": "/badParameter/value"
+  }
+]

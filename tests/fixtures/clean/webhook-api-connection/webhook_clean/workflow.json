@@ -1,0 +1,89 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "$connections": {
+        "type": "Object",
+        "defaultValue": {}
+      },
+      "mailboxAddress": {
+        "type": "String",
+        "defaultValue": "alerts@example.com"
+      }
+    },
+    "triggers": {
+      "When_a_new_email_arrives": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['office365']['connectionId']"
+            }
+          },
+          "path": "/datasets/default/triggers/onnewemail",
+          "queries": {
+            "folderPath": "Inbox",
+            "to": "@parameters('mailboxAddress')"
+          }
+        },
+        "splitOn": "@triggerBody()?['value']"
+      }
+    },
+    "actions": {
+      "Compose_Message": {
+        "type": "Compose",
+        "inputs": {
+          "subject": "@triggerBody()?['Subject']",
+          "from": "@triggerBody()?['From']",
+          "received": "@triggerBody()?['DateTimeReceived']"
+        },
+        "runAfter": {}
+      },
+      "Webhook_Action_No_Method": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "host": {},
+          "path": "/datasets/default/triggers/onnewemail"
+        },
+        "runAfter": {
+          "Compose_Message": [
+            "Succeeded"
+          ]
+        }
+      },
+      "Route_Message": {
+        "type": "Switch",
+        "expression": "@coalesce(triggerBody()?['Importance'], 'normal')",
+        "cases": {
+          "High": {
+            "case": "high",
+            "actions": {
+              "Compose_High_Message": {
+                "type": "Compose",
+                "inputs": "High priority: @{outputs('Compose_Message')?['subject']}",
+                "runAfter": {}
+              }
+            }
+          }
+        },
+        "default": {
+          "actions": {
+            "Compose_Default_Message": {
+              "type": "Compose",
+              "inputs": "@outputs('Compose_Message')",
+              "runAfter": {}
+            }
+          }
+        },
+        "runAfter": {
+          "Webhook_Action_No_Method": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

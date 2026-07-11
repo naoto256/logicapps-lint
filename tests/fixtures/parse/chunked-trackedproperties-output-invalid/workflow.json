@@ -1,0 +1,47 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    },
+    "actions": {
+      "Compose_body": {
+        "type": "Compose",
+        "inputs": {
+          "message": "hello"
+        },
+        "runAfter": {}
+      },
+      "Upload": {
+        "type": "Http",
+        "inputs": {
+          "method": "POST",
+          "uri": "https://example.invalid/upload",
+          "body": "@body('Compose_body')"
+        },
+        "trackedProperties": {
+          "status": "@action()['outputs']['statusCode']"
+        },
+        "runtimeConfiguration": {
+          "contentTransfer": {
+            "transferMode": "Chunked"
+          }
+        },
+        "runAfter": {
+          "Compose_body": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

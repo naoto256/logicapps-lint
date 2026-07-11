@@ -1,0 +1,20 @@
+[
+  {
+    "code": "project-connection-invalid-expression",
+    "severity": "error",
+    "path": "connections.json",
+    "pointer": "/managedApiConnections/blob/authentication"
+  },
+  {
+    "code": "project-missing-connection-parameter",
+    "severity": "error",
+    "path": "connections.json",
+    "pointer": "/managedApiConnections/blob/authentication"
+  },
+  {
+    "code": "project-missing-connection-parameter",
+    "severity": "error",
+    "path": "connections.json",
+    "pointer": "/managedApiConnections/blob/authentication"
+  }
+]

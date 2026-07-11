@@ -1,0 +1,16 @@
+{
+  "managedApiConnections": {
+    "azuretables": {
+      "api": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Web/locations/westus/managedApis/azuretables"
+      },
+      "connection": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Web/connections/azuretables"
+      },
+      "connectionRuntimeUrl": "https://example.invalid/azuretables",
+      "authentication": {
+        "type": "ManagedServiceIdentity"
+      }
+    }
+  }
+}

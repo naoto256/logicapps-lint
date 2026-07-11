@@ -1,0 +1,50 @@
+[
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "Main/manifest.json",
+    "pointer": "/connections/azureaisearch_#workflowname#/connectorId"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "Main/manifest.json",
+    "pointer": "/connections/azureaisearch_#workflowname#/kind"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "Main/manifest.json",
+    "pointer": "/parameters/0/description"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "Main/manifest.json",
+    "pointer": "/parameters/0/displayName"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "Main/manifest.json",
+    "pointer": "/parameters/0/required"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "Main/manifest.json",
+    "pointer": "/parameters/0/type"
+  },
+  {
+    "code": "template-workflow-invalid-connections-parameter",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/actions/Use_Connection/inputs"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/contentVersion"
+  }
+]

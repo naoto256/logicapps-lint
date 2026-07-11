@@ -1,0 +1,22 @@
+{
+  "badConcat": {
+    "type": "String",
+    "value": "@concat('a', 'b')"
+  },
+  "badParameter": {
+    "type": "String",
+    "value": "@parameters('other')"
+  },
+  "badBare": {
+    "type": "String",
+    "value": "@variables"
+  },
+  "badArm": {
+    "type": "String",
+    "value": "[parameters('name')]"
+  },
+  "okAppSetting": {
+    "type": "String",
+    "value": "@appsetting('SETTING_NAME')"
+  }
+}

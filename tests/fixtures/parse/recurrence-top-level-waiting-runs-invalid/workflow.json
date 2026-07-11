@@ -1,0 +1,24 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "Timer": {
+        "type": "Recurrence",
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 1
+        },
+        "runtimeConfiguration": {
+          "concurrency": {
+            "runs": 1
+          },
+          "maximumWaitingRuns": 20
+        }
+      }
+    },
+    "actions": {},
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

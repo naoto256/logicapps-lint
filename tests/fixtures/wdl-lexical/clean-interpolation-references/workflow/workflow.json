@@ -1,0 +1,39 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "customerId": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "actions": {
+      "ReadCustomer": {
+        "type": "Compose",
+        "inputs": "@triggerBody()?['customerId']"
+      },
+      "BuildMessage": {
+        "type": "Compose",
+        "runAfter": {
+          "ReadCustomer": [
+            "Succeeded"
+          ]
+        },
+        "inputs": "customer @{outputs('ReadCustomer')} came from @{triggerBody()?['source']}"
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

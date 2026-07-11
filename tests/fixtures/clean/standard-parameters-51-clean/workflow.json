@@ -1,0 +1,70 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    },
+    "actions": {},
+    "parameters": {
+      "P00": { "type": "String", "defaultValue": "" },
+      "P01": { "type": "String", "defaultValue": "" },
+      "P02": { "type": "String", "defaultValue": "" },
+      "P03": { "type": "String", "defaultValue": "" },
+      "P04": { "type": "String", "defaultValue": "" },
+      "P05": { "type": "String", "defaultValue": "" },
+      "P06": { "type": "String", "defaultValue": "" },
+      "P07": { "type": "String", "defaultValue": "" },
+      "P08": { "type": "String", "defaultValue": "" },
+      "P09": { "type": "String", "defaultValue": "" },
+      "P10": { "type": "String", "defaultValue": "" },
+      "P11": { "type": "String", "defaultValue": "" },
+      "P12": { "type": "String", "defaultValue": "" },
+      "P13": { "type": "String", "defaultValue": "" },
+      "P14": { "type": "String", "defaultValue": "" },
+      "P15": { "type": "String", "defaultValue": "" },
+      "P16": { "type": "String", "defaultValue": "" },
+      "P17": { "type": "String", "defaultValue": "" },
+      "P18": { "type": "String", "defaultValue": "" },
+      "P19": { "type": "String", "defaultValue": "" },
+      "P20": { "type": "String", "defaultValue": "" },
+      "P21": { "type": "String", "defaultValue": "" },
+      "P22": { "type": "String", "defaultValue": "" },
+      "P23": { "type": "String", "defaultValue": "" },
+      "P24": { "type": "String", "defaultValue": "" },
+      "P25": { "type": "String", "defaultValue": "" },
+      "P26": { "type": "String", "defaultValue": "" },
+      "P27": { "type": "String", "defaultValue": "" },
+      "P28": { "type": "String", "defaultValue": "" },
+      "P29": { "type": "String", "defaultValue": "" },
+      "P30": { "type": "String", "defaultValue": "" },
+      "P31": { "type": "String", "defaultValue": "" },
+      "P32": { "type": "String", "defaultValue": "" },
+      "P33": { "type": "String", "defaultValue": "" },
+      "P34": { "type": "String", "defaultValue": "" },
+      "P35": { "type": "String", "defaultValue": "" },
+      "P36": { "type": "String", "defaultValue": "" },
+      "P37": { "type": "String", "defaultValue": "" },
+      "P38": { "type": "String", "defaultValue": "" },
+      "P39": { "type": "String", "defaultValue": "" },
+      "P40": { "type": "String", "defaultValue": "" },
+      "P41": { "type": "String", "defaultValue": "" },
+      "P42": { "type": "String", "defaultValue": "" },
+      "P43": { "type": "String", "defaultValue": "" },
+      "P44": { "type": "String", "defaultValue": "" },
+      "P45": { "type": "String", "defaultValue": "" },
+      "P46": { "type": "String", "defaultValue": "" },
+      "P47": { "type": "String", "defaultValue": "" },
+      "P48": { "type": "String", "defaultValue": "" },
+      "P49": { "type": "String", "defaultValue": "" },
+      "P50": { "type": "String", "defaultValue": "" }
+    }
+  },
+  "kind": "Stateful"
+}

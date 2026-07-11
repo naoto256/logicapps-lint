@@ -1,0 +1,14 @@
+{
+  "managedApiConnections": {
+    "office365": {
+      "api": {
+        "id": "/providers/Microsoft.Web/locations/westus/managedApis/office365"
+      },
+      "authentication": "@parameters('tenantId')",
+      "connection": {
+        "id": "/subscriptions/example/resourceGroups/example/providers/Microsoft.Web/connections/office365"
+      },
+      "connectionRuntimeUrl": "https://example.test"
+    }
+  }
+}

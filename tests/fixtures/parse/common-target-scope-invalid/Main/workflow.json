@@ -1,0 +1,86 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "Manual": {
+        "type": "Request",
+        "kind": "Http",
+        "runtimeConfiguration": {
+          "staticResult": {
+            "name": "mock"
+          }
+        },
+        "inputs": {
+          "schema": {}
+        }
+      },
+      "Timer": {
+        "type": "Recurrence",
+        "operationOptions": "SuppressWorkflowHeadersOnResponse",
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 1
+        }
+      },
+      "Timer_Auth": {
+        "type": "Recurrence",
+        "operationOptions": "IncludeAuthorizationHeadersInOutputs",
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 1
+        }
+      },
+      "Timer_Repetitions": {
+        "type": "Recurrence",
+        "runtimeConfiguration": {
+          "concurrency": {
+            "repetitions": 2
+          }
+        },
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 1
+        }
+      },
+      "When_webhook": {
+        "type": "ApiConnectionWebhook",
+        "inputs": {
+          "body": {
+            "NotificationUrl": "@{listCallbackUrl()}"
+          },
+          "host": {
+            "connection": {
+              "name": "office365"
+            }
+          },
+          "path": "/MailSubscription/$subscriptions",
+          "retryPolicy": "not-an-object"
+        }
+      }
+    },
+    "actions": {
+      "Bad_Compose": {
+        "type": "Compose",
+        "operationOptions": "DisableAsyncPattern",
+        "limit": {
+          "timeout": "PT1M"
+        },
+        "inputs": "ok",
+        "runAfter": {}
+      },
+      "Bad_Suppress": {
+        "type": "Compose",
+        "operationOptions": "SuppressWorkflowHeaders",
+        "inputs": "ok",
+        "runAfter": {
+          "Bad_Compose": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

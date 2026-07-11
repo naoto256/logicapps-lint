@@ -1,0 +1,8 @@
+[
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/recurrence/schedule/weekDays"
+  }
+]

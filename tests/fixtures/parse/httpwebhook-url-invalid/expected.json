@@ -1,0 +1,14 @@
+[
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/actions/Subscribe/inputs/subscribe/uri"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/actions/Subscribe/inputs/unsubscribe/url"
+  }
+]

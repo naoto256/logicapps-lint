@@ -1,0 +1,8 @@
+[
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/triggers/Timer/recurrence/frequency"
+  }
+]

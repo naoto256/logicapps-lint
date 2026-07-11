@@ -1,0 +1,14 @@
+[
+  {
+    "code": "template-workflow-invalid-wrapper",
+    "severity": "error",
+    "path": "default/workflow.json",
+    "pointer": "/definition"
+  },
+  {
+    "code": "template-workflow-invalid-wrapper",
+    "severity": "error",
+    "path": "default/workflow.json",
+    "pointer": "/kind"
+  }
+]

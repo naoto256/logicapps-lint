@@ -1,0 +1,23 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "Manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        },
+        "conditions": [
+          {
+            "expression": "@equals(1, 1)",
+            "dependsOn": 42
+          }
+        ]
+      }
+    },
+    "actions": {},
+    "outputs": {}
+  }
+}

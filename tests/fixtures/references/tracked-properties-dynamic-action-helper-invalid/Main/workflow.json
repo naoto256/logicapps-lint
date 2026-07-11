@@ -1,0 +1,35 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "targetAction": {
+        "type": "String",
+        "defaultValue": "Other"
+      }
+    },
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Other": {
+        "type": "Compose",
+        "inputs": "other",
+        "runAfter": {}
+      },
+      "Tracked": {
+        "type": "Compose",
+        "inputs": "tracked",
+        "trackedProperties": {
+          "dynamicActions": "@actions(parameters('targetAction')).outputs",
+          "dynamicOutputs": "@outputs(parameters('targetAction'))"
+        },
+        "runAfter": {
+          "Other": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

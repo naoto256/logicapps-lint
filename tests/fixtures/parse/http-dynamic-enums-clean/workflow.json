@@ -1,0 +1,29 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "method": { "type": "String", "defaultValue": "GET" },
+    "authType": { "type": "String", "defaultValue": "ManagedServiceIdentity" }
+  },
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http",
+      "inputs": { "schema": {} }
+    }
+  },
+  "actions": {
+    "Call": {
+      "type": "Http",
+      "inputs": {
+        "method": "@parameters('method')",
+        "uri": "https://example.com/",
+        "authentication": {
+          "type": "@parameters('authType')"
+        }
+      },
+      "runAfter": {}
+    }
+  },
+  "outputs": {}
+}

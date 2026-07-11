@@ -1,0 +1,8 @@
+[
+  {
+    "code": "unknown-action-reference",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Run_JS/inputs/explicitDependencies/actions/0"
+  }
+]

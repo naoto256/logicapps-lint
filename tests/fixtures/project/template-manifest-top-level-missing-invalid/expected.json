@@ -1,0 +1,32 @@
+[
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/artifacts"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/images"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/id"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/summary"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/title"
+  }
+]

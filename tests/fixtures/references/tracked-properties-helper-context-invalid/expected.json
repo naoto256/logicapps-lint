@@ -1,0 +1,14 @@
+[
+  {
+    "code": "wdl-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Hook/trackedProperties/callback"
+  },
+  {
+    "code": "wdl-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Tracked/trackedProperties/otherBody"
+  }
+]

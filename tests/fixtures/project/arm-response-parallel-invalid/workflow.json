@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "arm-response-parallel",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+          "triggers": {
+            "manual": {
+              "type": "Request",
+              "kind": "Http"
+            }
+          },
+          "actions": "[createObject('Start', createObject('type', 'Compose', 'inputs', 'start', 'runAfter', createObject()), 'Return', createObject('type', 'Response', 'inputs', createObject('statusCode', 200), 'runAfter', createObject('Start', createArray('Succeeded'))), 'Also', createObject('type', 'Compose', 'inputs', 'b', 'runAfter', createObject('Start', createArray('Succeeded'))))]",
+          "outputs": {}
+        },
+        "parameters": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "code": "no-workflows-found",
+    "severity": "error",
+    "path": "target-dir-ignored",
+    "pointer": ""
+  }
+]

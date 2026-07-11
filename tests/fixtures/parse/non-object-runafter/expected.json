@@ -1,0 +1,8 @@
+[
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "shape_non_object_runafter/workflow.json",
+    "pointer": "/definition/actions/Send_email/runAfter"
+  }
+]

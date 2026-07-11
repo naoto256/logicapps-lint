@@ -1,0 +1,14 @@
+[
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Timer/type"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Loop/limit/count"
+  }
+]

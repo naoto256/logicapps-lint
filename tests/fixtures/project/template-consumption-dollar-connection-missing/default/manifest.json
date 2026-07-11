@@ -1,0 +1,23 @@
+{
+  "parameters": [],
+  "connections": {
+    "outlook_#workflowname#": {
+      "connectorId": "/serviceProviders/outlook",
+      "kind": "inapp"
+    }
+  },
+  "title": "Fixture template",
+  "description": "Fixture template.",
+  "artifacts": [
+    {
+      "type": "workflow",
+      "file": "workflow.json"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "id": "default",
+  "summary": "Fixture template"
+}

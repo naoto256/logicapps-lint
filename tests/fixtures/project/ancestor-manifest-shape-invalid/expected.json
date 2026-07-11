@@ -1,0 +1,8 @@
+[
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "manifest.json",
+    "pointer": "/connections"
+  }
+]

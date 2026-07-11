@@ -1,0 +1,56 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "actions": {
+      "Outer_scope": {
+        "type": "Scope",
+        "actions": {
+          "First_inner": {
+            "type": "Compose",
+            "inputs": "first",
+            "runAfter": {}
+          },
+          "Second_inner": {
+            "type": "Compose",
+            "inputs": "@outputs('First_inner')",
+            "runAfter": {
+              "First_inner": [
+                "Succeeded"
+              ]
+            }
+          },
+          "Third_inner": {
+            "type": "Compose",
+            "inputs": "@outputs('Second_inner')",
+            "runAfter": {
+              "Second_inner": [
+                "Succeeded"
+              ]
+            }
+          }
+        },
+        "runAfter": {}
+      },
+      "After_scope": {
+        "type": "Compose",
+        "inputs": "@outputs('Outer_scope')",
+        "runAfter": {
+          "Outer_scope": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    }
+  },
+  "kind": "Stateful"
+}

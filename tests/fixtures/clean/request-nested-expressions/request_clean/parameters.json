@@ -1,0 +1,6 @@
+{
+  "environmentName": {
+    "type": "String",
+    "value": "test"
+  }
+}

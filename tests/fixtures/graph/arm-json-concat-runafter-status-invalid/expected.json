@@ -1,0 +1,8 @@
+[
+  {
+    "code": "runafter-invalid-status",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/Use/runAfter/Existing_Action/0"
+  }
+]

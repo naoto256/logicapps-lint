@@ -1,0 +1,20 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Tracked": {
+        "type": "Compose",
+        "inputs": "ok",
+        "trackedProperties": {
+          "good": "@concat('literal action().status', action().outputs.statusCode)",
+          "badActionHelper": "@action().status",
+          "badNamedHelper": "@actions('Tracked').status"
+        },
+        "runAfter": {}
+      }
+    }
+  },
+  "kind": "Stateful"
+}

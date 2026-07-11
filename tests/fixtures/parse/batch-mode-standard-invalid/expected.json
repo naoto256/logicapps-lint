@@ -1,0 +1,8 @@
+[
+  {
+    "code": "workflow-shape-invalid-context",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/triggers/Batch/inputs/mode"
+  }
+]

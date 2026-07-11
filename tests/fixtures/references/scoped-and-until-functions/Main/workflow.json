@@ -1,0 +1,45 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "manual": {
+        "kind": "Http",
+        "type": "Request",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    },
+    "actions": {
+      "Use_Missing_Result": {
+        "type": "Compose",
+        "inputs": "@result('MissingScope')",
+        "runAfter": {}
+      },
+      "Until_loop": {
+        "type": "Until",
+        "expression": "@equals(1, 1)",
+        "limit": {
+          "count": 2,
+          "timeout": "PT1M"
+        },
+        "actions": {
+          "Use_Missing_Index": {
+            "type": "Compose",
+            "inputs": "@iterationIndexes('MissingUntil')",
+            "runAfter": {}
+          }
+        },
+        "runAfter": {
+          "Use_Missing_Result": [
+            "Succeeded"
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

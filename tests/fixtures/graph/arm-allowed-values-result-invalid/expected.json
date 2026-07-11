@@ -1,0 +1,8 @@
+[
+  {
+    "code": "unknown-scoped-action-reference",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/resources/0/properties/definition/actions/After/inputs"
+  }
+]

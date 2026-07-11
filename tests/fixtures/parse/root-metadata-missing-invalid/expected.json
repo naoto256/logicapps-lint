@@ -1,0 +1,14 @@
+[
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/$schema"
+  },
+  {
+    "code": "workflow-shape-missing-field",
+    "severity": "error",
+    "path": "workflow.json",
+    "pointer": "/definition/contentVersion"
+  }
+]

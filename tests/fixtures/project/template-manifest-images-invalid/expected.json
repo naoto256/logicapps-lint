@@ -1,0 +1,26 @@
+[
+  {
+    "code": "template-manifest-invalid-value",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/images/bad name"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/images/dark"
+  },
+  {
+    "code": "template-manifest-missing-field",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/images/light"
+  },
+  {
+    "code": "template-manifest-missing-file",
+    "severity": "error",
+    "path": "default/manifest.json",
+    "pointer": "/images/bad name"
+  }
+]

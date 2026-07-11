@@ -1,0 +1,8 @@
+[
+  {
+    "code": "workflow-shape-invalid-type",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/triggers/Manual/conditions/0/dependsOn"
+  }
+]

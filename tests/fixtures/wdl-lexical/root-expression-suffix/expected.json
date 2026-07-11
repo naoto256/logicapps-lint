@@ -1,0 +1,8 @@
+[
+  {
+    "code": "wdl-syntax-error",
+    "severity": "error",
+    "path": "workflow/workflow.json",
+    "pointer": "/definition/actions/Bad_Suffix/inputs"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "definition": {
+    "actions": {
+      "BadAction": []
+    },
+    "parameters": {},
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}}
+  },
+  "kind": "Stateful"
+}

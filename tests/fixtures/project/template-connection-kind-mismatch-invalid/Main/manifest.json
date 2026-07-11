@@ -1,0 +1,23 @@
+{
+  "id": "Main",
+  "title": "Fixture template",
+  "summary": "Fixture template.",
+  "description": "Fixture template.",
+  "artifacts": [
+    {
+      "type": "workflow",
+      "file": "workflow.json"
+    }
+  ],
+  "images": {
+    "light": "workflow-light",
+    "dark": "workflow-dark"
+  },
+  "parameters": [],
+  "connections": {
+    "office365_#workflowname#": {
+      "connectorId": "/serviceProviders/office365",
+      "kind": "inapp"
+    }
+  }
+}

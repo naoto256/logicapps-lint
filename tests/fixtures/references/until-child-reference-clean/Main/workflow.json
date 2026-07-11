@@ -1,0 +1,26 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {"manual":{"type":"Request","kind":"Http","inputs":{"schema":{}}}},
+    "actions": {
+      "Run_until_loop_succeeds_or_expires": {
+        "type": "Until",
+        "expression": "@equals(body('Create_new_resource'), 'Completed')",
+        "limit": {
+          "count": 3
+        },
+        "actions": {
+          "Create_new_resource": {
+            "type": "Compose",
+            "inputs": "Completed",
+            "runAfter": {}
+          }
+        },
+        "runAfter": {}
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

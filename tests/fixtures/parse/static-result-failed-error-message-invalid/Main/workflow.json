@@ -1,0 +1,43 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http",
+        "inputs": {
+          "schema": {}
+        }
+      }
+    },
+    "actions": {
+      "Call": {
+        "type": "Http",
+        "inputs": {
+          "method": "GET",
+          "uri": "https://example.invalid"
+        },
+        "runtimeConfiguration": {
+          "staticResult": {
+            "name": "HTTP0",
+            "staticResultOptions": "Enabled"
+          }
+        },
+        "runAfter": {}
+      }
+    },
+    "staticResults": {
+      "HTTP0": {
+        "status": "Failed",
+        "outputs": {
+          "errors": [
+            {}
+          ]
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "kind": "Stateful"
+}

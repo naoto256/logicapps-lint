@@ -1,0 +1,14 @@
+[
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Too_Short/inputs/retryPolicy/interval"
+  },
+  {
+    "code": "workflow-shape-invalid-value",
+    "severity": "error",
+    "path": "Main/workflow.json",
+    "pointer": "/definition/actions/Too_Long/inputs/retryPolicy/interval"
+  }
+]
